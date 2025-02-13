@@ -148,7 +148,7 @@ header .intro-text {
 @media only screen and (max-width: 480px) {
   .intro h1 {
     font-size: 36px; /* Further reduces header size on very small screens */
-    margin-top: 175px;
+    margin-top: 220px;
   }
 
   .intro p {
@@ -180,7 +180,7 @@ header .intro-text {
     border-radius: 25px;
     transition: all 0.5s linear;
     border: 0;
-    margin-top: 40px;
+    margin-top: 100px;
     z-index: 1000;
   }
 }
