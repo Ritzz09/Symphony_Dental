@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"; // Import useLocation
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"; 
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import { About_Clinic } from "./components/about_clinic";
@@ -22,16 +22,15 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 });
 
 const Layout = ({ children }) => {
-  const location = useLocation(); // Get current path
-
-  const hideNavbarFooter = location.pathname === "/thankyou"; // Check if on ThankYou page
-
-  return (
+  const location = useLocation();
+  return location.pathname !== "/thankyou" ? (
     <>
-      {!hideNavbarFooter && <Navigation />}
+      <Navigation />
       {children}
-      {!hideNavbarFooter && <Footer Footer={JsonData.Footer} />}
+      <Footer Footer={JsonData.Footer} />
     </>
+  ) : (
+    children // Render `ThankYou` without wrapping it in Navigation/Footer
   );
 };
 
@@ -45,27 +44,24 @@ const App = () => {
   return (
     <Router>
       <ScrollToTop />
-      <Layout>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Header data={landingPageData.Header} />
-                <About_Clinic data={landingPageData.About} />
-                <Services data={landingPageData.Services} />
-                <About_Dentist data={landingPageData.About} />
-                <Gallery data={landingPageData.Gallery} />
-                <Testimonials data={landingPageData.Testimonials} />
-                <FAQ data={landingPageData.FAQ} />
-                <Contact data={landingPageData.Contact} />
-                
-              </>
-            }
-          />
-          <Route path="/thankyou" element={<ThankYou />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Header data={landingPageData.Header} />
+              <About_Clinic data={landingPageData.About} />
+              <Services data={landingPageData.Services} />
+              <About_Dentist data={landingPageData.About} />
+              <Gallery data={landingPageData.Gallery} />
+              <Testimonials data={landingPageData.Testimonials} />
+              <FAQ data={landingPageData.FAQ} />
+              <Contact data={landingPageData.Contact} />
+            </Layout>
+          }
+        />
+        <Route path="/thankyou" element={<ThankYou />} />
+      </Routes>
     </Router>
   );
 };
