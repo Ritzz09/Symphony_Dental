@@ -25,13 +25,13 @@ const FloatingButtons = () => {
   return (
     <div className="floating-buttons">
       {/* Call Button */}
-      <a href="tel:+919876543210" className="call-btn">
+      <a href="tel:+917678045993" className="call-btn">
         <FaPhone />
       </a>
 
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/919876543210"
+        href="https://wa.me/917678045993"
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-btn"

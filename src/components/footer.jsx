@@ -1,6 +1,6 @@
 import React from "react";
 import "../components/Footer.css";
-import { FaWhatsapp, FaPhone, FaEnvelope, FaInstagram, FaTwitter, FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaWhatsapp, FaPhone, FaEnvelope, FaInstagram, FaTwitter, FaFacebook, FaLinkedin, FaYoutube, FaPinterest} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -13,10 +13,11 @@ const Footer = () => {
           Dr. Sailee Kalyankar, an experienced root canal specialist, our friendly dental hygienists and support staff are here to help bring out your best smile. We're all about your oral health, and our team of skilled dental professionals is ready to take care of you.
           </p>
           <div className="social-icons">
-          <a href="#"><FaFacebook /></a>
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaLinkedin /></a>
-            <a href="#"><FaTwitter /></a>
+          <a href="https://www.facebook.com/SymphonyDentalCareKharWest/"><FaFacebook /></a>
+            <a href="https://www.instagram.com/symphonydentalcare"><FaInstagram /></a>
+            <a href="https://www.youtube.com/@SymphonyDentalCare"><FaYoutube /></a>
+            <a href="https://x.com/Symphony2025"><FaTwitter /></a>
+            <a href="https://www.pinterest.com/symphonydentalcare/"><FaPinterest /></a>
           </div>
         </div>
 

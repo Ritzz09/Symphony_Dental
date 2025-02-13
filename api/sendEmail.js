@@ -19,7 +19,7 @@ export default async function handler(req, res) {
   try {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "hchaudhari754@gmail.com", // Change to dentist's email
+      to: "seexpert111@gmail.com", // Change to dentist's email
       subject: "New Appointment Request",
       text: `You have a new appointment request:
       

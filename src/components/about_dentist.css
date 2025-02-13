@@ -23,6 +23,7 @@
 .dentist-image {
   width: 450px;
   height: 450px;
+  margin-top: 45px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #000000;
@@ -119,12 +120,12 @@ h2 {
   }
 
   .dentist-image {
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
     max-width: 280px;
     align-self: center;
-
-  }
+    margin: 20px;
+}
 
   .dentist-text {
     padding: 10px;
