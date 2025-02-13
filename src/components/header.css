@@ -5,7 +5,7 @@
   align-items: center;
   width: 100%;
   padding: 0;
-  background: url(/public/img/natural-beauty-young-woman.jpg) center center no-repeat;
+  background: url(./Gallery/thankyou.jpeg) center center no-repeat;
   background-color: #e5e5e5;
   background-size: cover;
   height: 100vh;
@@ -13,7 +13,7 @@
   position: relative;
 }
 .intro .overlay {
-  background: rgba(0, 0, 0, 0.418);
+  background: rgba(0, 0, 0, 0.516);
   position: absolute;
   top: 0;
   left: 0;
@@ -31,7 +31,7 @@
 .intro h1 {
   font-family: "Raleway", sans-serif;
   color: #fff;
-  font-size: 50px;
+  font-size: 60px;
   font-weight: 500;
   text-transform: uppercase;
   margin: 0;
@@ -40,6 +40,8 @@
   text-shadow: none;
   z-index: 2;
   position: relative;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 .intro h1 span {
   font-weight: 800;
@@ -87,7 +89,7 @@ header .intro-text {
   cursor: pointer;
   position: relative;
   z-index: 2; /* Ensures button stays clickable */
-  margin-top: -230px; /* Maintains original position */
+  margin-top: 80px; /* Maintains original position */
 }
 
 .btn-custom:hover {
@@ -184,15 +186,15 @@ header .intro-text {
 }
 
 .header-image {
-  max-width: 100%; /* Ensures image fits within its column */
-  height: auto; /* Keeps aspect ratio */
+  max-width: 90%;
+  height: auto;
   display: block;
-  margin: auto; /* Centers the image */
-  margin-top: -150px;
-  
-  /* Floating animation */
+  margin: auto;
+  margin-top: 80px;
+  margin-right: inherit;
   animation: floating 3s ease-in-out infinite;
 }
+
 
 /* Mobile responsiveness */
 @media only screen and (max-width: 768px) {
