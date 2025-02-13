@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+.dentist-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f6f6f6;
+}
+
+.dentist-content {
+  display: flex;
+  max-width: 100%;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* Allows content to stack on smaller screens */
+  justify-content: center;
+  /* text-align: center; */
+}
+
+.dentist-image {
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #000000;
+}
+
+.dentist-text {
+  flex: 1;
+  margin-left: 20px;
+  max-width: 600px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.highlight {
+  background: linear-gradient(45deg, #1559a0 0%, #6372ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  display: inline;
+}
+
+.intro-text {
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.8;
+}
+
+.specialization {
+  font-size: 16px;
+  font-style: italic;
+  color: #555;
+  margin: 10px 0;
+}
+
+.specialization a {
+  color: #ff5733;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.specialization a:hover {
+  text-decoration: underline;
+}
+
+.dentist-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.dentist-list li {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-weight: bold;
+  /* justify-content: center; */
+}
+
+.appointment-button {
+  background: linear-gradient(to right, #1559a0 0%, #6372ff 100%);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease-in-out;
+  margin: 0 auto;
+}
+
+.appointment-button:hover {
+  background: black;
+  transform: scale(1.05);
+}
+
+/* 🔹 Responsive Design for Mobile & Tablet */
+@media screen and (max-width: 768px) {
+  .dentist-content {
+    flex-direction: column;
+    max-width: 100%; /* Ensures it doesn't overflow */
+    padding: 5px;
+  }
+
+  .dentist-image {
+    width: 200px;
+    height: 200px;
+    max-width: 280px;
+    align-self: center;
+
+  }
+
+  .dentist-text {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .highlight{
+    display: block;
+  }
+
+  .intro-text,
+  .specialization,
+  .dentist-list li {
+    font-size: 14px;
+  }
+
+  .appointment-button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}

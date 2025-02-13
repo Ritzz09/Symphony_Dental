@@ -1,0 +1,380 @@
+
+body,
+html {
+  font-family: "Open Sans", sans-serif;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-weight: 400;
+  width: 100% !important;
+  height: 100% !important;
+}
+h2,
+h3,
+h4 {
+  font-family: "Raleway", sans-serif;
+}
+h2 {
+  text-transform: uppercase;
+  margin: 0 0 20px;
+  font-weight: 800;
+  font-size: 36px;
+  color: #000000;
+}
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+}
+h4 {
+  font-size: 18px;
+  color: #000000;
+  font-weight: 600;
+}
+h5 {
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 20px;
+}
+p {
+  font-size: 17px;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+p.intro {
+  margin: 12px 0 0;
+  line-height: 24px;
+}
+a {
+  color: #244aaa;
+  font-weight: 400;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #608dfd;
+}
+ul,
+ol {
+  list-style: none;
+}
+ul,
+ol {
+  padding: 0;
+  webkit-padding: 0;
+  moz-padding: 0;
+}
+hr {
+  height: 2px;
+  width: 70px;
+  text-align: center;
+  position: relative;
+  background: #1e7a46;
+  margin-bottom: 20px;
+  border: 0;
+}
+
+.section-title {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.section-title h2 {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+.section-title h2::after {
+  position: absolute;
+  content: "";
+  background: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
+  height: 4px;
+  width: 60px;
+  bottom: 0;
+  margin-left: -30px;
+  left: 50%;
+}
+.section-title p {
+  font-size: 18px;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+/* Testimonials Section */
+/* Testimonials Section */
+#testimonials {
+  padding: 40px 0;
+  background: #f6f6f6;
+  text-align: center;
+}
+
+/* Section Title */
+.section-title p {
+  font-size: 16px;
+  /* font-weight: bold; */
+  color: #000000;
+  margin-bottom: 5px;
+  /* text-transform: uppercase; */
+}
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+/* Testimonials Container */
+.testimonials-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Added spacing between testimonials */
+  justify-content: center;
+}
+
+.testimonial-wrapper {
+  flex: 1 1 calc(33.333% - 20px); /* Ensures three testimonials per row */
+  max-width: calc(33.333% - 20px);
+  min-width: 280px;
+}
+
+.testimonial {
+  position: relative;
+  padding: 20px;
+  border: 1px dashed black;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 150px;
+}
+
+.testimonial.expanded-testimonial {
+  height: auto; /* Only expands the clicked one */
+}
+
+.testimonial:hover {
+  transform: scale(1.03);
+}
+
+/* Testimonial Image */
+.testimonial-image {
+  float: left;
+  margin-right: 15px;
+}
+.testimonial-image img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+}
+
+/* Testimonial Content */
+.testimonial-content {
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  flex-grow: 1;
+  padding: 15px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testimonial-text {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-style: italic;
+  color: #555;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testimonial-text.expanded {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+/* Read More button */
+.read-more-btn1 {
+  color: blue;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline;
+}
+
+.read-more-btn1:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .testimonial-wrapper {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* Show More Button (Hidden by Default) */
+.read-more-btn1 {
+  color: rgba(51, 51, 159, 0.782);
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.read-more-btn:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .col-md-4 {
+    width: 90%;
+  }
+  .testimonial {
+    width: 100%;
+    max-width: 400px;
+  }
+  .show-more-btn {
+    display: block;
+    margin: 15px auto;
+    padding: 8px 16px;
+    background: #112d4bfe;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+  
+}
+
+/* Team Section */
+#team {
+  background-color: #ffffff;
+  text-align: center;
+}
+
+#team .container {
+  max-width: 90%;
+  margin-bottom: 30px;
+  height: fit-content;
+}
+
+#team h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  margin-top: 50px; /* Reduced from 50px */
+  margin-bottom: 0; /* Reduce space below heading */
+}
+
+
+/* Team Card - Horizontal Image Layout */
+.team-card {
+  width: 100%;
+  height: 200px; /* Adjust height as needed */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+/* Full-Width Image */
+.team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures full coverage */
+}
+
+
+
+
+
+/* USP Container */
+
+
+
+
+
+
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.call-btn,
+.whatsapp-btn,
+.scroll-to-top {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+.call-btn {
+  background-color: #28a745;
+  rotate: 90deg;
+}
+
+.call-btn:hover {
+  background-color: #218838;
+}
+
+.whatsapp-btn {
+  background-color: #25d366;
+}
+
+.whatsapp-btn:hover {
+  background-color: #1ebe57;
+}
+
+.scroll-to-top {
+  background-color: #007bff;
+}
+
+.scroll-to-top:hover {
+  background-color: #0056b3;
+}
+
+.scroll-to-top:active {
+  transform: scale(0.9);
+}
+

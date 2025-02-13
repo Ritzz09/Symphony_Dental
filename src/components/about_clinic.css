@@ -1,0 +1,117 @@
+/* About_Clinic Section */
+.about-text{
+    margin-top: 10%;
+  }
+  .img-responsive{
+    border-radius: 10px;
+    width: 520px;
+    height: 540px;
+    background: #fff;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    
+  }
+
+  #about_clinic .section-title h2{
+    margin-top: 50px;
+  }
+
+
+
+  .about_clinic {
+    margin-top: 50px;
+    padding: 100px 0;
+    align-content: center;
+    overflow: hidden;
+    background-color: #f6f6f6;
+  }
+  #about_clinic::before {
+    content: "";
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: url("/public/img/background.jpg") center/cover no-repeat; Replace with your image */
+    opacity: 90%; /* Adjust transparency */
+    z-index: 1;
+
+  }
+  .about_clinic h3 {
+    font-size: 22px;
+    margin: 0 0 20px;
+  }
+  .about_clinic h2 {
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    font-weight: 800;
+    font-size: 36px;
+    color: #333;
+    font-family: "Raleway", sans-serif;
+  }
+  
+  .about_clinic h2::after {
+    position: absolute;
+    content: "";
+    background: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
+    height: 4px;
+    width: 60px;
+    bottom: 0;
+    left: 0;
+  }
+  .about_clinic .about-text li {
+    margin-bottom: 6px;
+    margin-left: 6px;
+    list-style: none;
+    padding: 0;
+  }
+  .about_clinic .about-text li:before {
+    content: "\f00c";
+    font-family: "FontAwesome";
+    color: #5ca9fb;
+    font-size: 11px;
+    font-weight: 300;
+    padding-right: 8px;
+  }
+  
+  
+  #about_clinic  p1 {
+    line-height: 22px;
+    text-align: justify;
+    text-justify: inter-word;
+    margin-top: 30px;
+  }
+  
+  .read-more-btn {
+    display: block;
+    margin: 15px auto;
+    padding: 8px 16px;
+    background: #112d4bfe;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease;
+  }
+  
+  .read-more-btn:hover {
+    background: #0e1239af;
+}
+
+.slick-slide{
+  height: 600px;
+}
+
+@media only screen and (max-width: 768px) {
+  .slick-slide{
+    height: 430px;
+  }
+  #about_clinic p{
+    margin-top: 40px;
+  }
+}

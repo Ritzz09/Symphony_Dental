@@ -1,0 +1,210 @@
+/* Header Section */
+.intro {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  background: url(/public/img/natural-beauty-young-woman.jpg) center center no-repeat;
+  background-color: #e5e5e5;
+  background-size: cover;
+  height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+}
+.intro .overlay {
+  background: rgba(0, 0, 0, 0.418);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1; /* Keeps overlay behind the button */
+}
+@font-face {
+  src: url("https://www.axis-praxis.org/fonts/webfonts/MetaVariableDemo-Set.woff2") format("woff2");
+  font-family: "Meta";
+  font-style: normal;
+  font-weight: normal;
+}
+
+.intro h1 {
+  font-family: "Raleway", sans-serif;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0;
+  background-size: cover;
+  /* font-variation-settings: "wght" 100, "ital" 0; */
+  text-shadow: none;
+  z-index: 2;
+  position: relative;
+}
+.intro h1 span {
+  font-weight: 800;
+  color: #5ca9fb;
+}
+
+.intro p {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 30px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  z-index: 2;
+  position: relative;
+}
+
+/* Ensure intro text container is above overlay */
+header .intro-text {
+  padding-top: 20%;
+  padding-bottom: 10%;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+  margin-left: -40px;
+  margin-top: -120px;
+}
+
+/* Fix for button not being clickable */
+.btn-custom {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #5ca9fb;
+  background-image: linear-gradient(to right, #1559a0 0%, #6372ff 100%);
+  padding: 14px 34px;
+  letter-spacing: 1px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 25px;
+  transition: all 0.5s linear;
+  border: 0;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 2; /* Ensures button stays clickable */
+  margin-top: -230px; /* Maintains original position */
+}
+
+.btn-custom:hover {
+  background: #1559a0;
+  color: #fff;
+  transform: scale(1.05);
+}
+/* Mobile responsiveness */
+ /* Mobile responsiveness */
+@media only screen and (max-width: 768px) {
+  .intro{
+    height: 90vh;
+    background-image: url(./Gallery/clinic.jpeg);
+  }
+  .intro .overlay{
+    height: 90vh;
+  }
+  .intro h1 {
+    font-size: 50px; /* Reduces header size on smaller screens */
+    margin-top: 175px;
+  }
+
+  .intro p1 {
+    display: none;
+  }
+
+  header .intro-text {
+    padding-top: 30%; /* Adjusts padding for mobile */
+    padding-bottom: 10%;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Ensures the text stays above the overlay */
+    margin-left: 5px;
+    margin-top: -40px;
+  }
+
+  .btn-custom{
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #5ca9fb;
+    background-image: linear-gradient(to right, #1559a0 0%, #6372ff 100%);
+    padding: 14px 34px;
+    letter-spacing: 1px;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: all 0.5s linear;
+    border: 0;
+    z-index: 1000;
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .intro h1 {
+    font-size: 36px; /* Further reduces header size on very small screens */
+    margin-top: 175px;
+  }
+
+  .intro p {
+    font-size: 16px; /* Further adjusts paragraph font size */
+    margin-top: 30px;
+  }
+
+  header .intro-text {
+    padding-top: 20%; /* Adjust padding to be responsive */
+    padding-bottom: 10%;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Ensures the text stays above the overlay */
+    margin-left: 5px;
+    margin-top: -40px;
+  }
+
+  .btn-custom{
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #5ca9fb;
+    background-image: linear-gradient(to right, #1559a0 0%, #6372ff 100%);
+    padding: 14px 34px;
+    letter-spacing: 1px;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: all 0.5s linear;
+    border: 0;
+    margin-top: 40px;
+    z-index: 1000;
+  }
+}
+
+.header-image {
+  max-width: 100%; /* Ensures image fits within its column */
+  height: auto; /* Keeps aspect ratio */
+  display: block;
+  margin: auto; /* Centers the image */
+  margin-top: -150px;
+  
+  /* Floating animation */
+  animation: floating 3s ease-in-out infinite;
+}
+
+/* Mobile responsiveness */
+@media only screen and (max-width: 768px) {
+  .row {
+    flex-direction: column; /* Stack text and image on top of each other */
+    text-align: center;
+  }
+
+  .header-image {
+    max-width: 80%; /* Reduces image size for smaller screens */
+    margin-top: -170px;
+    display: none;
+
+  }
+}
