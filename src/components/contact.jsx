@@ -41,7 +41,7 @@ export const Contact = (props) => {
       const result = await response.json();
       if (response.ok) {
         clearState();
-        navigate("/thank-you"); // Navigate to Thank You page
+        navigate("/thankyou"); // Navigate to Thank You page
       } else {
         alert(result.error || "Something went wrong");
       }
