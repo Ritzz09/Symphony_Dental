@@ -186,14 +186,16 @@ header .intro-text {
 }
 
 .header-image {
-  max-width: 70%;
-  height: auto;
+  max-width: 100%; /* Ensures image fits within its column */
+  height: auto; /* Keeps aspect ratio */
   display: block;
-  margin: auto;
-  margin-top: 80px;
-  margin-right: inherit;
+  margin: auto; /* Centers the image */
+  /* margin-top: -230px; */
+  
+  /* Floating animation */
   animation: floating 3s ease-in-out infinite;
 }
+
 
 
 /* Mobile responsiveness */

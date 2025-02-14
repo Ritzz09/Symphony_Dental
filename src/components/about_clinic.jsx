@@ -123,7 +123,7 @@ export const About_Clinic = (props) => {
                   </>
                 ) : (
                   paragraphs.map((text, index) => (
-                    <p style={{fontSize:'20px'}} key={index}>
+                    <p style={{fontSize:'17px', marginTop:'30px'}} key={index}>
                       {index === 1 ? (
                         <>
                           Led by <strong>Dr. Sailee Kalyankar</strong>, an experienced root canal specialist, 

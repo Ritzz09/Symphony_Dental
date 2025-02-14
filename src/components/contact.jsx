@@ -58,29 +58,28 @@ export const Contact = (props) => {
       <div className="container">
         <div className="col-md-5 col-md-offset-1 contact-info">
           <div className="section-title">
-            <h2>Book Appointment</h2>
-            <p style={{ fontWeight: "bold" }}>Ready to Transform Your Smile?</p>
-            <h5>Reach Out to Our Dental Team – We’re Here to Assist You</h5>
+            <h2>Ready to Transform Your Smile?</h2>
+            <p style={{ fontWeight: "bold" }}>Reach Out to Our Dental Team – We’re Here to Assist You</p>
           </div>
           <div className="contact-item">
-            <h3 style={{ fontWeight: "bold", fontSize: "32px" }}>Contact Info:</h3>
-            <p style={{ fontSize: "22px" }}>
+            <h3 style={{ fontWeight: "bold", fontSize: "30px" }}>Contact Info:</h3>
+            <p style={{ fontSize: "20px" }}>
               <i className="fa fa-map-marker" style={{ fontSize: "30px" }}></i>
               {props.data ? props.data.address : "loading"}
             </p>
           </div>
           <div className="contact-item">
             <a href="tel:+919876543210">
-              <p style={{ fontSize: "22px" }}>
-                <i className="fa fa-phone" style={{ fontSize: "30px" }}></i>
+              <p style={{ fontSize: "20px" }}>
+                <i className="fa fa-phone" style={{ fontSize: "30px",color:'black' }}></i>
                 {props.data ? props.data.phone : "loading"}
               </p>
             </a>
           </div>
           <div className="contact-item">
             <a href="mailto:contactsymphonydental@gmail.com">
-              <p style={{ fontSize: "22px" }}>
-                <i className="fa fa-envelope-o" style={{ fontSize: "30px" }}></i>
+              <p style={{ fontSize: "20px" }}>
+                <i className="fa fa-envelope-o" style={{ fontSize: "30px",color:'black' }}></i>
                 {props.data ? props.data.email : "loading"}
               </p>
             </a>

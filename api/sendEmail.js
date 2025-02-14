@@ -21,12 +21,12 @@ export default async function handler(req, res) {
       from: process.env.EMAIL_USER,
       to: "seexpert111@gmail.com", // Change to dentist's email
       subject: "New Appointment Request",
-      text: `You have a new appointment request:
+      text: `Details of the person contacted you are as follows:
       
       Name: ${name}
       Email: ${email}
       Mobile: ${mobile}
-      Interest: ${interest}
+      Purpose: ${interest}
       Appointment Date: ${appointmentDate}
       Message: ${message}`,
     });

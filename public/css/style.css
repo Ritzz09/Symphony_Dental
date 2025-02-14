@@ -95,7 +95,7 @@ hr {
   left: 50%;
 }
 .section-title p {
-  font-size: 18px;
+  font-size: 20px;
   color: black;
   font-family: 'Times New Roman', Times, serif;
 }
@@ -112,7 +112,7 @@ hr {
 
 /* Section Title */
 .section-title p {
-  font-size: 16px;
+  font-size: 20px;
   /* font-weight: bold; */
   color: #000000;
   margin-bottom: 5px;

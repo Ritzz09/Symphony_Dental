@@ -93,14 +93,14 @@
 .service-card h3 {
   font-weight: 600;
   color: #000;
-  font-size: 22px;
+  font-size: 24px;
   margin-bottom: 10px;
   text-align: center;
 }
 
 .service-card p {
   color: rgba(0, 0, 0, 0.85);
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.6;
   text-align: center;
   padding-left: 0;
