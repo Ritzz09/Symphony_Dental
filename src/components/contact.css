@@ -205,7 +205,9 @@ label {
   #contact .section-title h2::after {
       justify-self: anchor-center;
   }
-
+  #contact .container{
+    text-align: center;
+  }
   #contact .form-control{
     width: 100%;
   }

@@ -59,7 +59,7 @@ export const Contact = (props) => {
         <div className="col-md-5 col-md-offset-1 contact-info">
           <div className="section-title">
             <h2>Ready to Transform Your Smile?</h2>
-            <p style={{ fontWeight: "bold" }}>Reach Out to Our Dental Team – We’re Here to Assist You</p>
+            <p1 style={{ fontWeight: "bold" }}>Reach Out to Our Dental Team – We’re Here to Assist You</p1>
           </div>
           <div className="contact-item">
             <h3 style={{ fontWeight: "bold", fontSize: "30px" }}>Contact Info:</h3>
