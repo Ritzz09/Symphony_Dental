@@ -110,7 +110,7 @@ export const About_Clinic = (props) => {
               >
                 {isMobile && !expanded ? (
                   <>
-                    <p>{paragraphs[0]}</p>
+                    <p style={{textAlign:'justify', textJustify:'inter-word'}} >{paragraphs[0]}</p>
                     <button
                       className="read-more-btn"
                       onClick={(e) => {
