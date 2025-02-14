@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../components/about_clinic.css";
-import one from "./Gallery/clinic.jpeg";
+import one from "./Gallery/clinic.webp";
 // import two from "./Gallery/1.jpeg";
-import three from "./Gallery/2.jpeg";
-import four from "./Gallery/3.jpeg";
-import five from "./Gallery/4.jpeg";
-import six from "./Gallery/5.jpeg";
+import three from "./Gallery/2.webp";
+import four from "./Gallery/3.webp";
+import five from "./Gallery/4.webp";
+import six from "./Gallery/5.webp";
 
 export const About_Clinic = (props) => {
   const [expanded, setExpanded] = useState(false);
@@ -68,7 +68,7 @@ export const About_Clinic = (props) => {
   };
 
   const clinicImages = [
-    one,three,four,five,six
+    one,three,four,six,five
   ];
 
   return (
@@ -77,9 +77,9 @@ export const About_Clinic = (props) => {
         <div className="text-center">
           <div className="section-title">
             <h2>Welcome to Symphony Dental Care</h2>
-            <p style={{ textAlign: "center" }}>
+            {/* <p style={{ textAlign: "center" }}>
             A Modern Dental Clinic Committed to Your Dental Health
-            </p>
+            </p> */}
           </div>
         </div>
         <div>
@@ -123,7 +123,7 @@ export const About_Clinic = (props) => {
                   </>
                 ) : (
                   paragraphs.map((text, index) => (
-                    <p style={{fontSize:'17px', marginTop:'30px'}} key={index}>
+                    <p style={{fontSize:'17px', marginTop:'30px' , textAlign:'justify', textJustify:'inter-word'}} key={index}>
                       {index === 1 ? (
                         <>
                           Led by <strong>Dr. Sailee Kalyankar</strong>, an experienced root canal specialist, 

@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./assets/faq-accordion-card-main/images/header.png";
+import logo from "./Gallery/header.webp";
 import "../components/header.css";
 import { color } from "framer-motion";
 import { RxFontStyle } from "react-icons/rx";
@@ -18,10 +18,10 @@ export const Header = (props) => {
                   {props.data ? props.data.title : "Loading"}
                   <span></span>
                 </h1>
-                <p1 style={{color:"white",fontWeight:'2000', fontSize:'22px'}}>{props.data ? props.data.paragraph : "Loading"}</p1>
+                <p style={{color:"white",fontWeight:'2000'}}>{props.data ? props.data.paragraph : "Loading"}</p>
                 <span></span>
                 <div >
-                <a style={{fontWeight:'bold',fontSize:"20px"}} href="#contact" className="btn btn-custom  page-scroll" >
+                <a style={{fontWeight:'bold',fontSize:"16px"}} href="#contact" className="btn btn-custom  page-scroll" >
                     Enquire Now
                 </a>
                 </div>

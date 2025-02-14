@@ -5,7 +5,7 @@
   align-items: center;
   width: 100%;
   padding: 0;
-  background: url(./Gallery/thankyou.jpeg) center center no-repeat;
+  background: url(./Gallery/thankyou.webp) center center no-repeat;
   background-color: #e5e5e5;
   background-size: cover;
   height: 90vh;
@@ -50,7 +50,7 @@
 
 .intro p {
   color: #fff;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 300;
   line-height: 30px;
   margin: 0 auto;
@@ -102,7 +102,7 @@ header .intro-text {
 @media only screen and (max-width: 768px) {
   .intro{
     height: 90vh;
-    background-image: url(./Gallery/clinic.jpeg);
+    background-image: url(./Gallery/clinic.webp);
   }
   .intro .overlay{
     height: 90vh;
@@ -149,12 +149,15 @@ header .intro-text {
   .intro h1 {
     font-size: 36px; /* Further reduces header size on very small screens */
     margin-top: 220px;
+    display: none;
   }
 
-  .intro p {
-    font-size: 16px; /* Further adjusts paragraph font size */
-    margin-top: 30px;
-  }
+  #header .intro p {
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 180px;
+    line-height: normal;
+}
 
   header .intro-text {
     padding-top: 20%; /* Adjust padding to be responsive */
@@ -175,8 +178,8 @@ header .intro-text {
     padding: 14px 34px;
     letter-spacing: 1px;
     margin: 0;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 10px;
+    font-weight: 300;
     border-radius: 25px;
     transition: all 0.5s linear;
     border: 0;
@@ -204,9 +207,13 @@ header .intro-text {
   }
 
   .header-image {
-    max-width: 80%; /* Reduces image size for smaller screens */
-    margin-top: -170px;
     display: none;
 
   }
+  #header .intro p {
+    font-size: 45px;
+    font-weight: 700;
+    margin-top: 220px;
+    line-height: normal;
+}
 }

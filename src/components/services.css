@@ -5,7 +5,7 @@
   text-align: center;
   margin-top: 5%;
   overflow: hidden;
-  background: #328aa8;
+  background: #8cc9ca;
 }
   /* Image Overlay */
 #services::before {
@@ -82,10 +82,10 @@
   padding: 0 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.417);
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   height:350px;
   background-color: #ffffff50;
 }
@@ -95,14 +95,14 @@
   color: #000;
   font-size: 24px;
   margin-bottom: 10px;
-  text-align: center;
+  text-align: left;
 }
 
 .service-card p {
   color: rgba(0, 0, 0, 0.85);
   font-size: 19px;
   line-height: 1.6;
-  text-align: center;
+  text-align: left;
   padding-left: 0;
   text-indent: 0;
   transform: none;

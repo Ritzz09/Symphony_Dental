@@ -9,9 +9,8 @@ const Footer = () => {
         {/* About Us Section */}
         <div className="footer-section">
           <h3>About Us</h3>
-          <p>
-          Dr. Sailee Kalyankar, an experienced root canal specialist, our friendly dental hygienists and support staff are here to help bring out your best smile. We're all about your oral health, and our team of skilled dental professionals is ready to take care of you.
-          </p>
+          <p style={{textAlign:'justify', textJustify:'inter-word'}}>
+          At Symphony Dental Care, under the expertise of Dr. Sailee Kalyankar, a skilled root canal specialist, our welcoming dental hygienists and support team are dedicated to helping you achieve your best smile. We're committed to your oral health, and our team of experienced professionals is here to provide top-quality care.          </p>
           <div className="social-icons">
           <a href="https://www.facebook.com/SymphonyDentalCareKharWest/"><FaFacebook /></a>
             <a href="https://www.instagram.com/symphonydentalcare"><FaInstagram /></a>
@@ -60,8 +59,11 @@ const Footer = () => {
 
       <div className="footer-bottom">
       <p>
-            &copy; 2025 Symphony Dental Care. Design by{" MasterMind Web Developers "}
-      </p>
+  &copy; 2025 Symphony Dental Care. Design by{" "}
+  <a href="https://mastermindweb.in/" target="_blank" rel="noopener noreferrer">
+    MasterMind Web Developers
+  </a>
+</p>  
       </div>
     </footer>
   );

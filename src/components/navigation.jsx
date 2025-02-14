@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./assets/faq-accordion-card-main/images/logo.png";
+import logo from "./Gallery/logo1.webp";
 import "../components/navigation.css";
 
 

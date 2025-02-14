@@ -1,7 +1,7 @@
 {
   "Header": {
-    "title": "Your Trusted Dental Clinic in Khar West",
-    "paragraph": "Where Expert Care Meets Modern Technology for Your Best Smile"
+    "title": "Your Trusted Dental Clinic ",
+    "paragraph": "Orchestrating Beautiful Smiles"
   },
   "USP": [
     {
@@ -60,55 +60,34 @@
   "Testimonials": [
     {
       "img": "img/testimonials/01.jpg",
-      "text": "\"Dr Sayali is very intelligent and always on the top in her career. Her dedication to her profession is highly appreciable. She is an experienced Dentist. I am sure she will excel in the new venture. All the best Dr. Sayali!. - Umesh Dashrathi\"",
-      "name": "Umesh Dashrathi"
+      "text": "\"Dr Sayalee is very intelligent and always on the top in her career. Her dedication to her profession is highly appreciable. She is an experienced Dentist. I am sure she will excel in the new venture. All the best Dr. Sayali!. - Umesh Dashrathi\"",
+      "name": "Kuntal Patel"
     },
     {
       "img": "img/testimonials/02.jpg",
       "text": "\"I had to get a root canal treatment and was extremely nervous, but Dr. Sailee at Symphony Dental Care in Khar West made the entire process so smooth and painless. She is an expert endodontist and explained every step before starting. The treatment was completed efficiently, and I felt comfortable throughout the entire procedure. Highly recommend Dr. Sailee for anyone needing a root canal treatment!\"",
-      "name": "Krutarth Dsouza."
+      "name": "Krutarth Shah."
     },
     {
       "img": "img/testimonials/03.jpg",
       "text": "\"Dr. Sailee is an amazing dentist who is thorough, gentle, and makes every treatment a great experience at Symphony Dental Care in Khar West.\"",
-      "name": "Aparna Yadav"
+      "name": "Sonali Arora"
     },
     {
       "img": "img/testimonials/04.jpg",
       "text": "\"Symphony Dental Care in Khar West offers a fantastic clinic environment. The ambiance is calming, and the staff is friendly and professional. From the moment I walked in, I felt at ease. The clinic is equipped with the latest technology, and Dr. Sailee’s expertise is evident in the quality of care provided. It’s my go-to clinic for all my dental needs.\"",
-      "name": "Nikita Mahajan"
+      "name": "Rahi Kapadia"
     },{
       "img": "img/testimonials/05.jpg",
       "text": "\"I was looking for a clinic that could do a single-sitting RCT, and I’m so glad I found Symphony Dental Care. Dr. Sailee was amazing! The procedure was quick, and I didn’t feel any discomfort at all. It's so convenient to get it done in one visit, and the clinic’s modern technology made it a seamless experience. I left the clinic with a smile and no pain. Highly recommended!\"",
-      "name": "Swapnil Jadhav"
+      "name": "Indrajeet Singh"
     },{
       "img": "img/testimonials/06.jpg",
       "text": "\"Dr. Sailee, the endodontist, made my root canal treatment completely painless and stress-free.\"",
-      "name": "Parth Pathak"
+      "name": "Manas Kumar"
     }
   ],
-  "Gallery": [
-    {
-      "img": "img/team/01.jpg",
-      "name": "John Doe",
-      "job": "Director"
-    },
-    {
-      "img": "img/team/02.jpg",
-      "name": "Mike Doe",
-      "job": "Senior Designer"
-    },
-    {
-      "img": "img/team/03.jpg",
-      "name": "Jane Doe",
-      "job": "Senior Designer"
-    },
-    {
-      "img": "img/team/04.jpg",
-      "name": "Karen Doe",
-      "job": "Project Manager"
-    }
-  ],
+
   "Contact": {
     "address": "1st Floor, Ashray Building, 101, 18th Rd, opp. Laxmi Narayan Temple, Khar, Khar West, Mumbai, Maharashtra 400052 ",
     "phone": "+91 7678045993",
@@ -116,27 +95,6 @@
     "facebook": "fb.com",
     "twitter": "twitter.com",
     "youtube": "youtube.com"
-  },
-  "Features": [
-    {
-      "icon": "fa fa-comments-o",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
-    },
-    {
-      "icon": "fa fa-bullhorn",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
-    },
-    {
-      "icon": "fa fa-group",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
-    },
-    {
-      "icon": "fa fa-magic",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
-    }
-  ]
+  }
+  
 } 

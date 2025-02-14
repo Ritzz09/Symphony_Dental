@@ -8,7 +8,7 @@ export const About_Dentist = () => {
     <div id="about_dentist" className="dentist-container">
       <div className="dentist-content">
         <img
-          src="img/dentist.jpg"
+          src="img/dentist.webp"
           alt="Dr. Akshay Bandewar"
           className="dentist-image"
         />
@@ -16,20 +16,22 @@ export const About_Dentist = () => {
           <h2>
             Meet  <span className="highlight">Dr.Sailee Kalyankar</span>
           </h2>
-          <p style={{color:'#292727'}}>
-          <strong>Dr. Sailee Kalyankar</strong> is a highly experienced dentist and root canal specialist based in Khar West. With over 8 years of expertise in Conservative Dentistry & Endodontics (BDS, MDS), she is dedicated to providing gentle, comprehensive care for patients of all ages.
+          <p style={{color:'#292727',textAlign:'justify', textJustify:'inter-word'}}>
+          <strong>Dr. Sailee Kalyankar</strong> is a highly experienced dentist and root canal specialist based in Khar/Bandra. With over 8 years of expertise in Conservative Dentistry & Endodontics (BDS, MDS), she is dedicated to providing gentle, comprehensive care for patients of all ages.
           </p>
-          <p style={{color:'#292727'}}>
-          Dr. Sailee leads Symphony Dental Care, a premier dental clinic in Khar West, offering a wide range of dental services, from routine check-ups to advanced treatments such as Full Mouth Rehabilitation, Single Sitting Root Canal Treatment (RCT), Dental Implants, Teeth Whitening, Braces & Aligners, Crowns & Bridges, Pediatric Dentistry and many more. Her focus is on delivering personalized care in a comfortable, modern setting.
+          <p style={{color:'#292727', textAlign:'justify', textJustify:'inter-word'}}>
+          Dr. Sailee leads Symphony Dental Care, a premier dental clinic in Khar/Bandra, offering a wide range of dental services, from routine check-ups to advanced treatments such as Full Mouth Rehabilitation, Single Sitting Root Canal Treatment (RCT), Dental Implants, Teeth Whitening, Braces & Aligners, Crowns & Bridges, Pediatric Dentistry and many more. Her focus is on delivering personalized care in a comfortable, modern setting.
 
           </p>
           <ul className="dentist-list">
-            <li>⭐ MDS in Conservative Dentistry & Endodontics </li>
-            <li>⭐ Master of Smile Makeovers </li>
-            <li>⭐ 8+ Years of Experience</li>
-            <li>⭐ Specialized in Root Canal Treatment (RCT)</li>
-            <li>⭐ Patient-Centered Approach</li>
-            <li>⭐ 100+ Smiles Restored Every Month</li>
+            <li>● MDS in Conservative Dentistry & Endodontics </li>
+            <li>● 8+ Years of Experience</li>
+            <li>● Expertise in Microscopic Root Canal Treatment  </li>
+            <li>● Painless and Minimally Invasive Techniques</li>
+            <li>● Gentle and Reassuring Demeanor</li>
+            <li>● Pain and Anxiety Management</li>
+            <li>● Strong Specialists Team and Referral Network</li>
+
           </ul>
           {/* <button className="appointment-button">Book An Appointment</button> */}
         </div>

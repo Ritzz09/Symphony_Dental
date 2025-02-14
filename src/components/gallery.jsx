@@ -9,12 +9,12 @@ import { useState, useEffect } from 'react';
 // SwiperCore.use([Pagination, EffectCoverflow, Autoplay]);
 
 import './gallery.css';
-import zero from "./Gallery/clinic.jpeg";
-import one from "./Gallery/1.jpeg";
-import Two from "./Gallery/2.jpeg";
-import Three from "./Gallery/3.jpeg";
-import Four from "./Gallery/4.jpeg";
-import Five from "./Gallery/5.jpeg";
+import zero from "./Gallery/clinic.webp";
+import one from "./Gallery/1.webp";
+import Two from "./Gallery/2.webp";
+import Three from "./Gallery/3.webp";
+import Four from "./Gallery/4.webp";
+import Five from "./Gallery/5.webp";
 // import Six from "./Gallery/6.jpeg";
 // import Seven from "./Gallery/7.jpeg";
 // import Eight from "./Gallery/8.jpeg";
