@@ -15,6 +15,7 @@ import { About_Dentist } from "./components/about_dentist";
 import ScrollToTop from "./components/scroll";
 import ThankYou from "./components/thankyou"; 
 import "./App.css";
+import SEO from "./components/SEO";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -49,6 +50,7 @@ const App = () => {
           path="/"
           element={
             <Layout>
+              <SEO />
               <Header data={landingPageData.Header} />
               <About_Clinic data={landingPageData.About} />
               <Services data={landingPageData.Services} />

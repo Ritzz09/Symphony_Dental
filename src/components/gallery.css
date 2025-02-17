@@ -14,7 +14,10 @@
 #gallery{
     background-color: #8cc9ca;
 }
-  
+.slider{
+    width:70%;
+    height: 90%;
+}
 .gallery-container {
     display: flex;
     flex-direction: column; /* Ensures text comes first, then gallery */
@@ -110,7 +113,8 @@
         height: 55vh;
     }
     .slider{
-        height: auto;
+        height: 80%;
+        width: 100%;
     }
 }
 
@@ -129,7 +133,8 @@
         height: 55vh;
     }
     .slider{
-        height: auto;
+        height: 80%;
+        width: 100%;
     }
 }
 
