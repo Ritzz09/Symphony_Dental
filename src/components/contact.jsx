@@ -69,7 +69,7 @@ export const Contact = (props) => {
             </p>
           </div>
           <div className="contact-item">
-            <a href="tel:+919876543210">
+            <a href="tel:+917678045993">
               <p style={{ fontSize: "20px" }}>
                 <i className="fa fa-phone" style={{ fontSize: "30px",color:'black' }}></i>
                 {props.data ? props.data.phone : "loading"}
