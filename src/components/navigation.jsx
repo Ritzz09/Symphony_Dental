@@ -48,7 +48,7 @@ export const Navigation = (props) => {
             </li>
             <li>
               <a href="#about_dentist" className="page-scroll" onClick={handleNavClick}>
-                About Dentist
+               Dentist
               </a>
             </li>
             <li>

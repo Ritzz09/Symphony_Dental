@@ -106,7 +106,6 @@ export const Contact = (props) => {
                   name="email"
                   className="form-control"
                   placeholder="Email"
-                  required
                   value={formData.email}
                   onChange={handleChange}
                 />
@@ -129,7 +128,7 @@ export const Contact = (props) => {
                 <select
                   name="interest"
                   className="form-control"
-                  required
+             
                   value={formData.interest}
                   onChange={handleChange}
                 >
@@ -163,7 +162,7 @@ export const Contact = (props) => {
                 className="form-control"
                 rows="4"
                 placeholder="Message"
-                required
+         
                 value={formData.message}
                 onChange={handleChange}
               ></textarea>

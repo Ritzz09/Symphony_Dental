@@ -12,11 +12,11 @@ const Footer = () => {
           <p style={{textAlign:'justify', textJustify:'inter-word'}}>
           At Symphony Dental Care, under the expertise of Dr. Sailee Kalyankar, a skilled root canal specialist, our welcoming dental hygienists and support team are dedicated to helping you achieve your best smile. We're committed to your oral health, and our team of experienced professionals is here to provide top-quality care.          </p>
           <div className="social-icons">
-          <a href="https://www.facebook.com/SymphonyDentalCareKharWest/"><FaFacebook /></a>
-            <a href="https://www.instagram.com/symphonydentalcare"><FaInstagram /></a>
-            <a href="https://www.youtube.com/@SymphonyDentalCare"><FaYoutube /></a>
-            <a href="https://x.com/Symphony2025"><FaTwitter /></a>
-            <a href="https://www.pinterest.com/symphonydentalcare/"><FaPinterest /></a>
+          <a target="_blank" href="https://www.facebook.com/SymphonyDentalCareKharWest/"><FaFacebook /></a>
+            <a target="_blank" href="https://www.instagram.com/symphonydentalcare"><FaInstagram /></a>
+            <a target="_blank" href="https://www.youtube.com/@SymphonyDentalCare"><FaYoutube /></a>
+            <a target="_blank" href="https://x.com/Symphony2025"><FaTwitter /></a>
+            <a target="_blank" href="https://www.pinterest.com/symphonydentalcare/"><FaPinterest /></a>
           </div>
         </div>
 
