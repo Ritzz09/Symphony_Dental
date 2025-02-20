@@ -150,7 +150,7 @@ export const Contact = (props) => {
                 type="date"
                 name="appointmentDate"
                 className="form-control"
-                required
+               
                 value={formData.appointmentDate}
                 onChange={handleChange}
               />

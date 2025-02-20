@@ -13,7 +13,7 @@ export const Header = (props) => {
           <div className="container">
             <div className="row align-items-center"> {/* Ensures vertical alignment */}
               {/* Left Section - Text */}
-              <div className="col-md-8 intro-text">
+              <div className="col-md-12 intro-text">
                 <h1>
                   {props.data ? props.data.title : "Loading"}
                   <span></span>
@@ -30,11 +30,11 @@ export const Header = (props) => {
               
               {/* Right Section - Image */}
               <div className="col-md-4 text-center">
-                <img 
+                {/* <img 
                   src={logo}  // Update with your image path
                   alt="Right Section Image"
                   className="img-fluid header-image" 
-                />
+                /> */}
               </div>
                
             </div>
