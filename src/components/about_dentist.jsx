@@ -17,11 +17,11 @@ export const About_Dentist = () => {
             Meet  <span className="highlight">Dr.Sailee Kalyankar</span>
           </h2>
           <h5> MDS in Conservative Dentistry & Endodontics</h5>
-          <p style={{color:'#292727',textAlign:'justify', textJustify:'inter-word'}}>
+          <p style={{color:'#292727',textAlign:'justify'}}>
           <strong>Dr. Sailee Kalyankar</strong> is a highly experienced dentist and root canal specialist based in Khar/Bandra. With over 8 years of expertise in Conservative Dentistry & Endodontics (BDS, MDS), she is dedicated to providing gentle, comprehensive care for patients of all ages.
           </p>
           
-          <p style={{color:'#292727', textAlign:'justify', textJustify:'inter-word'}}>
+          <p style={{color:'#292727', textAlign:'justify', marginTop:'30px'}}>
           Dr. Sailee leads Symphony Dental Care, a premier dental clinic in Khar/Bandra, offering a wide range of dental services, from routine check-ups to advanced treatments such as Full Mouth Rehabilitation, Single Sitting Root Canal Treatment (RCT), Dental Implants, Teeth Whitening, Braces & Aligners, Crowns & Bridges, Pediatric Dentistry and many more. Her focus is on delivering personalized care in a comfortable, modern setting.
 
           </p>

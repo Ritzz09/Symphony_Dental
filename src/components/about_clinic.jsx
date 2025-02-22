@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../components/about_clinic.css";
-import one from "./Gallery/clinic.webp";
+import one from "./Gallery/clinic.jpg";
 // import two from "./Gallery/1.jpeg";
 import three from "./Gallery/2.webp";
 import four from "./Gallery/3.webp";
@@ -123,7 +123,7 @@ export const About_Clinic = (props) => {
                   </>
                 ) : (
                   paragraphs.map((text, index) => (
-                    <p style={{fontSize:'17px', marginTop:'30px' , textAlign:'justify', textJustify:'inter-word'}} key={index}>
+                    <p style={{fontSize:'17px', marginTop:'30px' , textAlign:'justify'}} key={index}>
                       {index === 1 ? (
                         <>
                           Led by <strong>Dr. Sailee Kalyankar</strong>, an experienced root canal specialist, 

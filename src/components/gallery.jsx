@@ -69,9 +69,10 @@ const Gallery = () => {
     <div id="gallery" className="gallery" style={{ position: 'relative' }}>
         <div className="text-center">
             <div className="section-title1">
-                <h2>Gallery</h2>
-                <p style={{ textAlign: 'center'}}>
-                Our Smiles, Our Pride
+                <h2 style={{color:'white'}}>Our Smiles, Our Pride</h2>
+                <p style={{ textAlign: 'center', color:'white'}}>
+                See the Transformation Through Our Patient Success Stories
+
                 {/* <br></br>See the Transformation Through Our Patient Success Stories */}
                 </p>
             </div>

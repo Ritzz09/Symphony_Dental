@@ -12,11 +12,11 @@
   }
 
 #gallery{
-    background-color: #93a87e;
+    background-color:#003b51;
 }
 .slider{
     width:70%;
-    height: 90%;
+    height: 100%;
 }
 .gallery-container {
     display: flex;
@@ -113,7 +113,7 @@
         height: 55vh;
     }
     .slider{
-        height: 80%;
+        height: 70%;
         width: 100%;
     }
 }
@@ -133,11 +133,7 @@
         height: 55vh;
     }
     .slider{
-        height: 80%;
+        height: 70%;
         width: 100%;
     }
-}
-
-.slider{
-    height: 70%;
 }

@@ -25,8 +25,8 @@ export const Services = () => {
     <div id="services" className="text-center">
       <div className="container">
         <div className="section-title">
-          <h2>Your Path to a Healthier Smile Starts Here </h2>
-          <p style={{ textAlign: "center" , textTransform:'capitalize'}}>
+          <h2 style={{color:'white'}}>Your Path to a Healthier Smile Starts Here </h2>
+          <p style={{ textAlign: "center" , textTransform:'capitalize', color:'white'}}>
           From Preventive Care to Advanced Treatments – We Offer Everything You Need
           </p>
         </div>

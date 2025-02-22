@@ -5,7 +5,7 @@
   text-align: center;
   margin-top: 5%;
   overflow: hidden;
-  background: #a9c191;
+  background: #003b51;
 }
   /* Image Overlay */
 #services::before {
@@ -49,7 +49,7 @@
 /* Swiper container */
 .swiper {
   padding: 20px;
-  height: 400px;
+  height: 450px;
   width: 100%;
 
 }
@@ -71,7 +71,7 @@
 
 #services .swiper-pagination {
   position: absolute;
-  bottom: 10px !important;
+  bottom: 5px !important;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -86,7 +86,7 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  height:350px;
+  height:380px;
   background-color: #ffffff50;
 }
 
