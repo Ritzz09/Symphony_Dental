@@ -125,6 +125,10 @@ h2 {
 
 /* 🔹 Responsive Design for Mobile & Tablet */
 @media screen and (max-width: 768px) {
+
+  .dentist-container{
+    padding: 0;
+  }
   .dentist-content {
     flex-direction: column;
     max-width: 100%; /* Ensures it doesn't overflow */
