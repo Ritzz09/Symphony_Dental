@@ -23,6 +23,7 @@ const Footer = () => {
         {/* Quick Links Section */}
         <div className="footer-section">
           <h3>Quick Links</h3>
+          
           <ul>
             <li><a className='page-scroll' href="#header">Home</a></li>
             <li><a className='page-scroll' href="#about_clinic">About Clinic</a></li>

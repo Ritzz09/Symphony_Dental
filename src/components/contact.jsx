@@ -132,13 +132,14 @@ export const Contact = (props) => {
                   value={formData.interest}
                   onChange={handleChange}
                 >
-                  <option value="">Select Your Interest</option>
-                  <option value="Teeth Cleaning">Teeth Cleaning</option>
-                  <option value="Cavity Filling">Cavity Filling</option>
-                  <option value="Teeth Whitening">Teeth Whitening</option>
-                  <option value="Braces Consultation">Braces Consultation</option>
-                  <option value="Root Canal">Root Canal</option>
-                  <option value="Dental Implants">Dental Implants</option>
+                  <option value="">Choose Your Treatment</option>
+                  <option value="Teeth Cleaning and whitening ">Teeth cleaning and whitening </option>
+                  <option value="Root canal treatment ">Root canal treatment </option>
+                  <option value="Tooth fillings ">Tooth fillings </option>
+                  <option value="Smile designing ">Smile designing </option>
+                  <option value="Veneers">Veneers </option>
+                  <option value="Implants">Implants</option>
+                  <option value="Extraction">Extraction</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
