@@ -13,7 +13,7 @@
 /* Add a card-like container behind the form area */
 #contact form {
   position: relative;
-  background-color: #8cc9caf0;
+  background-color: #003b51;
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 50px 100px -20px rgba(50, 50, 93, .55), 0 30px 60px -20px rgba(0, 0, 0, 1), inset 0 -2px 6px 0 rgba(10, 37, 64, .35);
@@ -94,7 +94,7 @@
 
 #contact .btn-custom {
   margin: 30px 0;
-  background: #397576;
+  background: #0289ba;
   border: 2px solid #000000;
   
 }

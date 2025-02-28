@@ -12,13 +12,13 @@ import './gallery.css';
 import zero from "./Gallery/patient1.jpg";
 import one from "./Gallery/patient2.jpg";
 import Two from "./Gallery/patient3.jpg";
-// import Three from "./Gallery/3.webp";
-// import Four from "./Gallery/4.webp";
-// import Five from "./Gallery/5.webp";
-// import Six from "./Gallery/6.jpeg";
-// import Seven from "./Gallery/7.jpeg";
-// import Eight from "./Gallery/8.jpeg";
-// import Nine from "./Gallery/9.jpeg";
+import Three from "./Gallery/patient4.jpg";
+import Four from "./Gallery/p1.jpg";   
+import Five from "./Gallery/patient6.jpg";
+import Six from "./Gallery/patient7.jpg";
+import Seven from "./Gallery/patient8.jpg";
+import Eight from "./Gallery/patient9.jpg";
+import Nine from "./Gallery/patient10.jpg";
 
 const gallery = [
     {
@@ -33,34 +33,34 @@ const gallery = [
        
         url: Two
     },
-    // {
+    {
        
-    //     url: Three
-    // },
-    // {
+        url: Three
+    },
+    {
        
-    //     url: Four
-    // },
-    // {
+        url: Four
+    },
+    {
        
-    //     url: Five
-    // },
-    // {
+        url: Five
+    },
+    {
        
-    //     url: Six
-    // },
-    // {
+        url: Six
+    },
+    {
        
-    //     url: Seven
-    // },
-    // {
+        url: Seven
+    },
+    {
        
-    //     url: Eight
-    // },
-    // {
+        url: Eight
+    },
+    {
        
-    //     url: Nine
-    // },
+        url: Nine
+    },
 ];
 
 const Gallery = () => {
