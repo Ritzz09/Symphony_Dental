@@ -18,10 +18,10 @@ export const About_Dentist = () => {
           </h2>
           <h5> MDS in Conservative Dentistry & Endodontics</h5>
           <p
-  style={{
-    color: "#292727",
-    textAlign: window.innerWidth <= 768 ? "center" : "left",
-  }}
+  // style={{
+  //   color: "#292727",
+  //   textAlign: window.innerWidth <= 768 ? "center" : "left",
+  // }}
 >
   <strong>Dr. Sailee Kalyankar</strong> is a highly experienced dentist and
   root canal specialist based in Khar/Bandra. With over 8 years of expertise in

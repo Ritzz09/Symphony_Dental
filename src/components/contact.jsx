@@ -59,7 +59,7 @@ export const Contact = (props) => {
         <div className="col-md-5 col-md-offset-1 contact-info">
           <div className="section-title">
             <h2>Ready to Transform Your Smile?</h2>
-            <p1 style={{ fontWeight: "bold" }}>Reach Out to Our Dental Team – We’re Here to Assist You</p1>
+            <p1 >Reach Out to Our Dental Team – We’re Here to Assist You</p1>
           </div>
           <div className="contact-item">
             <h3 style={{ fontWeight: "bold", fontSize: "30px" }}>Contact Info:</h3>
@@ -133,10 +133,10 @@ export const Contact = (props) => {
                   onChange={handleChange}
                 >
                   <option value="">Choose Your Treatment</option>
-                  <option value="Teeth Cleaning and whitening ">Teeth cleaning and whitening </option>
-                  <option value="Root canal treatment ">Root canal treatment </option>
-                  <option value="Tooth fillings ">Tooth fillings </option>
-                  <option value="Smile designing ">Smile designing </option>
+                  <option value="Teeth Cleaning and whitening ">Teeth Cleaning and Whitening </option>
+                  <option value="Root canal treatment ">Root Canal Treatment </option>
+                  <option value="Tooth fillings ">Tooth Fillings </option>
+                  <option value="Smile designing ">Smile Designing </option>
                   <option value="Veneers">Veneers </option>
                   <option value="Implants">Implants</option>
                   <option value="Extraction">Extraction</option>
