@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 
+
 export const Testimonials = (props) => {
   
   useEffect(() => {
@@ -11,15 +12,19 @@ export const Testimonials = (props) => {
     return () => {
       document.body.removeChild(script); // Cleanup when unmounting
     };
-  }, []); // Empty dependency array ensures script loads only once when component mounts
+  }, []); // Runs once when component mounts
 
   return (
-    <div>
-      {/* Elfsight Widget Container */}
-      <div className="elfsight-app-d22ef220-0e8f-4f1b-8405-3c07ffe8e949" data-elfsight-app-lazy></div>
+    <div id="testimonials" className="elfsight-widget-container">
+      {/* Elfsight Widget */}
+      <div 
+        className="elfsight-app-d22ef220-0e8f-4f1b-8405-3c07ffe8e949" 
+        data-elfsight-app-lazy
+      ></div>
     </div>
   );
 };
+
 
   // const [showAll, setShowAll] = useState(false);
   // const [isMobile, setIsMobile] = useState(window.innerWidth < 768);

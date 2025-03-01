@@ -378,3 +378,21 @@ hr {
   transform: scale(0.9);
 }
 
+.elfsight-widget-container {
+  max-width: 100%;
+  width: 100%;
+
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0; /* Adjust spacing */
+}
+
+@media screen and (max-width: 768px) {
+  .elfsight-widget-container {
+    height: auto;
+    min-height: 300px; /* Set appropriate height */
+    margin-bottom: 20px; /* Ensure spacing below the widget */
+  }
+}
