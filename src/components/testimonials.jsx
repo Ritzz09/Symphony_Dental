@@ -17,10 +17,7 @@ export const Testimonials = (props) => {
   return (
     <div id="testimonials" className="elfsight-widget-container">
       {/* Elfsight Widget */}
-      <div 
-        className="elfsight-app-d22ef220-0e8f-4f1b-8405-3c07ffe8e949" 
-        data-elfsight-app-lazy
-      ></div>
+      <div class="elfsight-app-d22ef220-0e8f-4f1b-8405-3c07ffe8e949" data-elfsight-app-lazy></div>
     </div>
   );
 };

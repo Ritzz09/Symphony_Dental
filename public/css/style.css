@@ -381,12 +381,12 @@ hr {
 .elfsight-widget-container {
   max-width: 100%;
   width: 100%;
-
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0; /* Adjust spacing */
+  display: inline-block;
+  align-items: baseline;
+  padding: 10px 0;
+  align-content: stretch;
+  justify-items: stretch;
 }
 
 @media screen and (max-width: 768px) {
