@@ -382,7 +382,7 @@ hr {
   max-width: 100%;
   width: 100%;
   overflow: hidden;
-  display: inline-block;
+  /* display: inline-block; */
   align-items: baseline;
   padding: 10px 0;
   align-content: stretch;
