@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../components/about_clinic.css";
-import one from "./Gallery/clinic.jpg";
+import one from "./Gallery/clinic.webp";
 // import two from "./Gallery/1.jpeg";
 import three from "./Gallery/2.webp";
 import four from "./Gallery/3.webp";

@@ -9,16 +9,18 @@ import { useState, useEffect } from 'react';
 // SwiperCore.use([Pagination, EffectCoverflow, Autoplay]);
 
 import './gallery.css';
-import zero from "./Gallery/patient1.jpg";
-import one from "./Gallery/patient2.jpg";
-import Two from "./Gallery/patient3.jpg";
-import Three from "./Gallery/patient4.jpg";
-import Four from "./Gallery/p1.jpg";   
-import Five from "./Gallery/patient6.jpg";
-import Six from "./Gallery/patient7.jpg";
-import Seven from "./Gallery/patient8.jpg";
-import Eight from "./Gallery/patient9.jpg";
-import Nine from "./Gallery/patient10.jpg";
+import zero from "./Gallery/patient1.webp";
+import one from "./Gallery/patient2.webp";
+import Two from "./Gallery/patient3.webp";
+import Three from "./Gallery/patient4.webp";
+import Four from "./Gallery/p1.webp";   
+import Five from "./Gallery/patient6.webp";
+import Six from "./Gallery/patient7.webp";
+import Seven from "./Gallery/patient8.webp";
+import Eight from "./Gallery/patient9.webp";
+import Nine from "./Gallery/patient10.webp";
+import ten from "./Gallery/patient11.webp";
+import eleven from "./Gallery/patient12.webp";
 
 const gallery = [
     {
@@ -60,6 +62,14 @@ const gallery = [
     {
        
         url: Nine
+    },
+    {
+       
+        url: ten
+    },
+    {
+       
+        url: eleven
     },
 ];
 
