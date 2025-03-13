@@ -146,7 +146,7 @@ export const Contact = (props) => {
             </div>
 
             <div className="form-group">
-              <label>Select Appointment Date:</label>
+              <label style={{color:"white"}}>Select Appointment Date:</label>
               <input
                 type="date"
                 name="appointmentDate"

@@ -117,7 +117,7 @@ label {
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.42857143;
-  color: #312e2e;
+  color: #fefefe;
   background-color: #ffffff77;
   background-image: none;
   border: 1px solid #000000;
@@ -129,6 +129,10 @@ label {
   transition: none;
   /* height: 40px; */
   margin-bottom: 20px;
+}
+#contact .form-control::placeholder {
+  color: white !important;
+  opacity: 1; /* Ensures the color is fully visible */
 }
 
 #contact .form-control:focus {
