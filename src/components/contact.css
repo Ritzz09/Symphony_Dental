@@ -94,14 +94,14 @@
 
 #contact .btn-custom {
   margin: 30px 0;
-  background: #0289ba;
-  border: 2px solid #000000;
+  background-color: #5ca9fb;
+  background-image: linear-gradient(to right, #1559a0 0%, #6372ff 100%);
   
 }
 
 #contact .btn-custom:hover {
   color: #eaeaea;
-  background: #000000;
+  background: #1559a0;
 }
 
 label {

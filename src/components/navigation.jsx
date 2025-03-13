@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./Gallery/logo1.webp";
+import logo from "./Gallery/logo.png";
 import "../components/navigation.css";
 
 

@@ -10,9 +10,11 @@
 
 .dentist-content {
   display: flex;
-  max-width: 100%;
+  /* max-width: 100%; */
+  width: 88%;
   background: white;
   padding: 30px;
+  padding-left: 10px !important;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   flex-wrap: wrap; /* Allows content to stack on smaller screens */
@@ -38,18 +40,16 @@
   color: rgb(29, 31, 32);
   text-transform: uppercase;
   font-size: 16px;
-  border: 1px dashed black;
-  border-radius: 10px;
-  line-height: 1; /* Reduce line spacing */
+  line-height: 0.5; /* Reduce line spacing */
   display: inline-block; /* Ensures the border wraps tightly around the text */
-  margin-bottom: 10px;
-  padding: 5px;
+  margin-bottom: 25px;
+  /* padding: 5px; */
   margin-top: 0;
 }
 
 h2 {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 400;
   /* margin-bottom: 30px; */
 }
 
