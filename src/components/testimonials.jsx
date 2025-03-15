@@ -15,10 +15,11 @@ export const Testimonials = (props) => {
   }, []); // Runs once when component mounts
 
   return (  
+    <section className="testimonial">
     <div id="testimonials" className="elfsight-widget-container">
       {/* Elfsight Widget */}
-      <div class="elfsight-app-fe2d94be-8977-441a-90c8-4efd0bbe8639" data-elfsight-app-lazy></div>    </div>
-
+      <div className="elfsight-app-fe2d94be-8977-441a-90c8-4efd0bbe8639" data-elfsight-app-lazy></div>    </div>
+    </section>
       
   );
 };

@@ -104,11 +104,7 @@ hr {
 
 /* Testimonials Section */
 /* Testimonials Section */
-#testimonials {
-  padding: 40px 0;
-  background: #f6f6f6;
-  text-align: center;
-}
+
 
 /* Section Title */
 .section-title p {
@@ -125,85 +121,6 @@ hr {
   margin-bottom: 20px;
 }
 
-/* Testimonials Container */
-.testimonials-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Added spacing between testimonials */
-  justify-content: center;
-}
-
-.testimonial-wrapper {
-  flex: 1 1 calc(33.333% - 20px); /* Ensures three testimonials per row */
-  max-width: calc(33.333% - 20px);
-  min-width: 280px;
-}
-
-.testimonial {
-  position: relative;
-  padding: 20px;
-  border: 1px dashed black;
-  border-radius: 10px;
-  background: white;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  min-height: 150px;
-}
-
-.testimonial.expanded-testimonial {
-  height: auto; /* Only expands the clicked one */
-}
-
-.testimonial:hover {
-  transform: scale(1.03);
-}
-
-/* Testimonial Image */
-.testimonial-image {
-  float: left;
-  margin-right: 15px;
-}
-.testimonial-image img {
-  display: block;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 2px solid #ddd;
-}
-
-/* Testimonial Content */
-.testimonial-content {
-  position: relative;
-  overflow: hidden;
-  text-align: left;
-  flex-grow: 1;
-  padding: 15px;
-  background: #f8f8f8;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.testimonial-text {
-  margin-bottom: 0;
-  font-size: 14px;
-  font-style: italic;
-  color: #555;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.testimonial-text.expanded {
-  -webkit-line-clamp: unset;
-  overflow: visible;
-}
 
 /* Read More button */
 .read-more-btn1 {
@@ -378,24 +295,26 @@ hr {
   transform: scale(0.9);
 }
 .elfsight-widget-container {
-  width: 100%;
+
+  
   display: flex;
   justify-content: center;
   text-align: left !important;
-  /* align-items: center; */
+  align-items: center;
   padding: 10px; /* Adds some space around */
 }
 
 .elfsight-app-fe2d94be-8977-441a-90c8-4efd0bbe8639 {
-  width: 100%;
-  max-width: 85%; /* Increased width for larger screens */
+  
+  width: 88%; 
   text-align: left !important;
+  align-self: center;
 
 }
 
 @media screen and (max-width: 1024px) {
   .elfsight-app-fe2d94be-8977-441a-90c8-4efd0bbe8639 {
-    max-width: 100%; /* Allow full width on medium screens */
+   
     text-align: left !important;
   }
 }
