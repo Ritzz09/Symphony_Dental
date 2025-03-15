@@ -388,7 +388,7 @@ hr {
 
 .elfsight-app-fe2d94be-8977-441a-90c8-4efd0bbe8639 {
   width: 100%;
-  max-width: 1200px; /* Increased width for larger screens */
+  max-width: 85%; /* Increased width for larger screens */
   text-align: left !important;
 
 }
@@ -410,7 +410,7 @@ hr {
   }
   
   .elfsight-app-fe2d94be-8977-441a-90c8-4efd0bbe8639 {
-    max-width: 95%; /* Use most of the screen width on mobile */
+    max-width: 85%; /* Use most of the screen width on mobile */
     text-align: left !important;
 
   }
