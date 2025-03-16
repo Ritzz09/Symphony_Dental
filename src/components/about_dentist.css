@@ -129,7 +129,7 @@ h2 {
 
   .dentist-content {
     flex-direction: column;
-    max-width: 100%; /* Ensures it doesn't overflow */
+    width: 100%; /* Ensures it doesn't overflow */
     padding: 5px;
   }
 
