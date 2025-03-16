@@ -1,7 +1,9 @@
 /* Services Section */
 #services {
   position: relative;
-  padding: 50px;
+  /* padding: 50px; */
+  padding-top: 30px;
+  padding-bottom: 30px;
   text-align: center;
   margin-top: 5%;
   overflow: hidden;
@@ -130,7 +132,7 @@
  
  #services .swiper{
     width: 340px;
-    margin-left: -20%;
+    /* margin-left: -10%; */
   }
   .service-card h3{
     margin-top: 10px;
