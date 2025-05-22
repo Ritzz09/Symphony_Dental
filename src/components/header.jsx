@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./Gallery/header.webp";
+// import logo from "./Gallery/header.webp";
 import "../components/header.css";
 import { color } from "framer-motion";
 import { RxFontStyle } from "react-icons/rx";

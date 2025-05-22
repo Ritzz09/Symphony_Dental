@@ -1,5 +1,6 @@
 import React from "react";
 import "../components/about_dentist.css";
+import img from "./Gallery/dentist1.jpg";
 
 
 
@@ -8,7 +9,7 @@ export const About_Dentist = () => {
     <div id="about_dentist" className="dentist-container">
       <div className="dentist-content">
         <img
-          src="img/dentist.webp"
+          src={img}
           alt="Dr. Akshay Bandewar"
           className="dentist-image"
         />

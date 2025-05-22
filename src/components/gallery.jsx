@@ -21,6 +21,14 @@ import Eight from "./Gallery/patient9.webp";
 import Nine from "./Gallery/patient10.webp";
 import ten from "./Gallery/patient11.webp";
 import eleven from "./Gallery/patient12.webp";
+import twelve from "./Gallery/patient13.jpg";
+import thirteen from "./Gallery/patient14.jpg";
+import fourteen from "./Gallery/patient15.jpg";
+import fifteen from "./Gallery/patient16.jpg";
+import sixteen from "./Gallery/patient17.jpg";
+import seventeen from "./Gallery/patient18.jpg";
+
+
 
 const gallery = [
     {
@@ -70,6 +78,30 @@ const gallery = [
     {
        
         url: eleven
+    },
+    {
+       
+        url: twelve
+    },
+    {
+       
+        url: thirteen
+    },
+    {
+       
+        url: fourteen
+    },
+    {
+       
+        url: fifteen
+    },
+    {
+       
+        url: sixteen
+    },
+    {
+       
+        url: seventeen
     },
 ];
 

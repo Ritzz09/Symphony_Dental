@@ -6,10 +6,13 @@ import "slick-carousel/slick/slick-theme.css";
 import "../components/about_clinic.css";
 import one from "./Gallery/clinic.webp";
 // import two from "./Gallery/1.jpeg";
+import zero from "./Gallery/clinic1.webp";
 import three from "./Gallery/2.webp";
 import four from "./Gallery/3.webp";
 import five from "./Gallery/4.webp";
 import six from "./Gallery/5.webp";
+import seven from "./Gallery/6.jpg";
+import eight from "./Gallery/7.jpg";
 
 export const About_Clinic = (props) => {
   const [expanded, setExpanded] = useState(false);
@@ -68,7 +71,7 @@ export const About_Clinic = (props) => {
   };
 
   const clinicImages = [
-    one,three,four,six,five
+    zero,one,three,four,six,five,seven,eight
   ];
 
   return (
