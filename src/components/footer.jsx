@@ -39,8 +39,8 @@ const Footer = () => {
         {/* Open Hours Section */}
         <div className="footer-section">
           <h3>Open Hours</h3>
-          <p>Tuesday - Sunday: 9:00am to 9:00pm</p>
-          <p>Monday: Closed </p>
+          <p>Monday - Sunday: 9:00am to 10:00pm</p>
+          
         </div>
 
         {/* Map Section */}
