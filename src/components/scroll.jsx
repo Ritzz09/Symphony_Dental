@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaArrowUp, FaPhone, FaWhatsapp } from "react-icons/fa"; // Import icons
-
+import "./scroll.css";
 
 const FloatingButtons = () => {
   const [isVisible, setIsVisible] = useState(false);
