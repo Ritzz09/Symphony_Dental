@@ -23,75 +23,74 @@ const IconArrowRight = (props) => (
 // Data
 const myths = [
   {
-    id: "sugar-only",
-    title: "Myth #1: If my teeth don’t hurt, they’re fine.",
-    bust:
-      "No pain doesn’t always mean no problems.",
-    desc: "This is one of the most dangerous myths. Many dental issues like cavities, gum disease, or infections don’t cause pain in the early stages. By the time you’re feeling discomfort, the problem may have already progressed. Around 60% of dental issues are symptom-free in early stages. (Source: American Dental Association) Regular dental check-ups help detect issues early, before they turn into painful and expensive procedures.",
-    tip: "Rinse after snacks, limit sipping, and brush twice daily with fluoride toothpaste.",
+    id: "no-pain-no-problem",
+    title: "Myth #1: If my teeth don't hurt, they're fine.",
+    bust: "No pain doesn't always mean no problems.",
+    desc: "This is one of the most dangerous myths. Many dental issues like cavities, gum disease, or infections don't cause pain in the early stages. By the time you're feeling discomfort, the problem may have already progressed. Around 60% of dental issues are symptom-free in early stages. (Source: American Dental Association) Regular dental check-ups help detect issues early, before they turn into painful and expensive procedures.",
+    tip: "Visit your dentist every 6 months, even if everything feels okay.",
   },
   {
-    id: "hard-brush",
-    title: "Myth #2: Brushing harder cleans better",
-    bust:
-      "Aggressive brushing can wear enamel and injure gums. It doesn't remove plaque more effectively than gentle, thorough technique.",
-    tip: "Use a soft-bristle brush, 2 minutes, small circles, and light pressure.",
+    id: "hard-brushing",
+    title: "Myth #2: Brushing harder makes your teeth cleaner.",
+    bust: "Aggressive brushing can do more harm than good.",
+    desc: "Scrubbing your teeth like you're cleaning a dirty pan? Please stop! Brushing too hard can wear down enamel and damage your gums, leading to sensitivity and gum recession. The key is not pressure, but technique.",
+    tip: "Use a soft-bristled toothbrush, and brush gently in circular motions for two minutes.",
   },
   {
-    id: "bleeding-normal",
-    title: "Myth #3: Bleeding gums are normal",
-    bust:
-      "Bleeding is an early sign of gum inflammation (gingivitis), not something to ignore. Left untreated, it can progress to periodontal disease.",
-    tip: "Improve flossing, brush the gumline, and see your dentist for a professional cleaning.",
+    id: "sugar-main-cause",
+    title: "Myth #3: Sugar is the main cause of cavities.",
+    bust: "Sugar is a factor, but not the only one.",
+    desc: "Yes, sugar feeds the bacteria in your mouth, which then produce acid that erodes enamel. But it's how often you consume sugar and your oral hygiene habits that matter more. Snacking on sweets throughout the day is more damaging than eating a dessert and brushing afterward.",
+    tip: "Rinse your mouth or brush after consuming sugary foods, and try to limit frequent snacking.",
   },
   {
-    id: "whitening-damage",
-    title: "Myth #4: Whitening permanently damages teeth",
-    bust:
-      "Professional whitening is safe when supervised. Temporary sensitivity is common but reversible. Enamel isn't permanently harmed.",
-    tip: "Follow dentist guidance, use desensitizing toothpaste before/after.",
+    id: "flossing-unnecessary",
+    title: "Myth #4: Flossing isn't necessary if you brush well.",
+    bust: "Flossing cleans where your brush can't reach.",
+    desc: "No matter how well you brush, your toothbrush can't reach between your teeth. That's where plaque and food debris love to hide. Skipping floss can lead to gum disease and cavities in those hidden spots.",
+    tip: "Make flossing a part of your nightly routine, it only takes 1-2 minutes!",
   },
   {
-    id: "baby-teeth",
-    title: "Myth #5: Baby teeth don't matter",
-    bust:
-      "Primary teeth guide jaw growth, speech, and nutrition. Decay can cause pain, infection, and affect developing permanent teeth.",
-    tip: "Start dental visits by age 1 and brush as soon as the first tooth erupts.",
+    id: "whitening-toothpaste",
+    title: "Myth #5: Whitening toothpaste will make my teeth super white.",
+    bust: "Most whitening toothpastes only remove surface stains.",
+    desc: "Whitening toothpaste can help remove minor stains from coffee or tea, but they won't dramatically change the color of your teeth. For noticeable results, professional whitening treatments are the way to go.",
+    tip: "Talk to your dentist about safe and effective whitening options tailored to your needs.",
   },
   {
-    id: "no-pain-no-visit",
-    title: "Myth #6: If nothing hurts, no dentist needed",
-    bust:
-      "Many issues are painless until advanced. Routine checkups catch problems early—easier, cheaper, and less invasive to treat.",
-    tip: "See your dentist every 6 months (or as recommended for your risk level).",
+    id: "baby-teeth-dont-matter",
+    title: "Myth #6: Baby teeth don't matter, they'll fall out anyway.",
+    bust: "Healthy baby teeth are crucial for lifelong oral health.",
+    desc: "Neglecting baby teeth can lead to pain, infections, and problems with permanent teeth. They hold space for adult teeth and help with speech and chewing. Early dental care sets the foundation for healthy habits and smiles in the future.",
+    tip: "Start dental check-ups as early as age 1, and encourage brushing habits from the start.",
   },
   {
-    id: "flossing-optional",
-    title: "Myth #7: Flossing is optional",
-    bust:
-      "Toothbrushes can't reach between teeth where most cavities and gum disease start. Interdental cleaning is essential.",
-    tip: "Use floss, soft picks, or water flossers daily—choose what you'll stick with.",
+    id: "dental-treatments-painful",
+    title: "Myth #7: Dental treatments are always painful.",
+    bust: "Modern dentistry is surprisingly comfortable.",
+    desc: "Gone are the days of painful, noisy drills and terrifying visits. With advancements in technology, numbing techniques, and patient-centered care, most procedures today are comfortable and anxiety-free. At our clinic, we go the extra mile to make sure you feel calm and cared for and hey, we might even play some music to help you relax.",
+    tip: "If you have dental anxiety, don't be afraid to talk to your dentist. A good team will always work to make you feel safe and comfortable.",
   },
   {
-    id: "mouthwash-replaces",
-    title: "Myth #8: Mouthwash replaces brushing",
-    bust:
-      "Mouthwash can freshen breath and reduce bacteria, but it can't remove plaque biofilm like mechanical brushing and flossing.",
-    tip: "Use mouthwash as an adjunct—not a replacement—for daily brushing and flossing.",
+    id: "bad-breath-brushing",
+    title: "Myth #8: If I have bad breath, it means I'm not brushing enough.",
+    bust: "Bad breath can have many causes, not just poor brushing.",
+    desc: "While brushing and flossing are essential, chronic bad breath (halitosis) can also stem from dry mouth, gum disease, certain foods, or medical conditions. Sometimes, it's not about brushing more but addressing the root cause.",
+    tip: "Stay hydrated, clean your tongue daily, and see your dentist if bad breath persists.",
   },
   {
-    id: "fruit-healthy",
-    title: "Myth #9: Fruit juices and sparkling waters are harmless",
-    bust:
-      "Many are acidic and can erode enamel over time, even without sugar. Frequent sipping increases risk.",
-    tip: "Keep acidic drinks with meals, use a straw, and rinse with water afterward.",
+    id: "bleeding-gums-normal",
+    title: "Myth #9: It's normal for gums to bleed when brushing.",
+    bust: "Bleeding gums are a warning sign.",
+    desc: "Healthy gums should not bleed when you brush or floss. If they do, it could be an early sign of gingivitis or gum disease and ignoring it can lead to serious oral health problems down the line.",
+    tip: "Don't stop brushing — instead, see your dentist for an exam and improve your flossing routine.",
   },
   {
-    id: "aging-teeth",
-    title: "Myth #10: Tooth loss is inevitable with age",
-    bust:
-      "With good hygiene, diet, and regular care, teeth can last a lifetime. Age alone doesn't cause tooth loss—disease does.",
-    tip: "Prioritize prevention: fluoride, cleanings, nightguards if you grind, and timely treatment.",
+    id: "dental-procedures-expensive",
+    title: "Myth #10: All dental procedures are expensive.",
+    bust: "Preventive care is affordable and saves money long-term.",
+    desc: "While some treatments can be costly, routine cleanings, check-ups, and early interventions are much more affordable and can prevent the need for complex (and pricey) procedures later.",
+    tip: "Invest in preventive care and discuss flexible payment plans with your dental office. Prevention truly is cheaper than cure!",
   },
 ];
 
@@ -386,13 +385,13 @@ export default function Blog({
 
         .hero-img {
           width: 100%;
-          height: 46vh;
+          height: 100%;
           object-fit: cover;
         }
 
         @media (min-width: 640px) {
           .hero-img {
-            height: 65vh;
+            height: 100%vh;
           }
         }
 
@@ -408,9 +407,9 @@ export default function Blog({
         @media (prefers-color-scheme: dark) {
           .hero-overlay {
             background: linear-gradient(to bottom, 
-              rgba(0, 0, 0, 0.2) 0%, 
-              rgba(0, 0, 0, 0.3) 50%, 
-              rgba(0, 0, 0, 0.7) 100%);
+              rgba(0, 0, 0, 0.5) 0%, 
+              rgba(0, 0, 0, 0.7) 50%, 
+              rgba(0, 0, 0, 1) 100%);
           }
         }
 
@@ -615,9 +614,15 @@ export default function Blog({
           font-size: 16px;
           color: #1f2937;
         }
-
+        .myth-text1 {
+          font-size: 24px;
+          color: #1f2937;
+        }
         @media (prefers-color-scheme: dark) {
           .myth-text {
+            color: #e5e7eb;
+          }
+          .myth-text1 {
             color: #e5e7eb;
           }
         }
@@ -785,6 +790,65 @@ export default function Blog({
           white-space: nowrap;
           border: 0;
         }
+        
+        /* Author Card */
+.author-card {
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  padding: 24px;
+  margin: 30px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .author-card {
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: #171717;
+  }
+}
+
+.author-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.author-name {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+@media (prefers-color-scheme: dark) {
+  .author-name {
+    color: #e5e7eb;
+  }
+}
+
+.author-text {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+@media (prefers-color-scheme: dark) {
+  .author-text {
+    color: #d1d5db;
+  }
+}
+
+.author-specialties {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #374151;
+}
+
+@media (prefers-color-scheme: dark) {
+  .author-specialties {
+    color: #e5e7eb;
+  }
+}
+
       `}</style>
 
       <div ref={rootRef}>
@@ -840,8 +904,8 @@ export default function Blog({
                 <a href="#myths" className="hover-scale btn-primary">
                   Read article <IconArrowRight className="ml-2" />
                 </a>
-                <a href="#prevention" className="story-link btn-secondary">
-                  Prevention tips
+                <a href="/#contact" className="story-link btn-secondary">
+                  Book Appointment
                 </a>
               </div>
             </div>
@@ -862,14 +926,14 @@ export default function Blog({
                   <div className="myth-icon-x" aria-hidden="true">
                     <IconX width={24} height={24} />
                   </div>
-                  <h2 className="myth-title">{m.title}</h2>
+                  <h3 className="myth-title">{m.title}</h3>
                 </div>
                 <div className="myth-content">
                   <div className="myth-icon-check" aria-hidden="true">
                     <IconCheck width={20} height={20} />
                   </div>
-                  <p className="myth-text">{m.bust}</p>
-
+                  <p className="myth-text1">{m.bust}</p>
+                  <br/> <br/>
                 </div>
                 <p className="myth-text">{m.desc}</p>
                 {m.tip && (
@@ -881,12 +945,18 @@ export default function Blog({
             ))}
 
             <section id="prevention" className="prevention-section">
-              <h2 className="prevention-title">Simple prevention framework</h2>
+              <h2 className="prevention-title">Gender, Age & Oral Health – Quick Insights</h2>
               <ul className="prevention-list">
-                <li>Brush 2x/day with fluoride · 2 minutes · soft bristles</li>
-                <li>Clean between daily (floss, picks, or water flosser)</li>
-                <li>Limit frequent snacking and acidic sipping</li>
-                <li>Dental checkups and cleanings every 6 months</li>
+                <li>Men are more likely to skip dental visits, leading to
+delayed diagnosis.
+</li>
+                <li>Women may experience increased gum sensitivity
+during pregnancy and menopause.
+</li>
+                <li>Children (5–19) and Seniors (65+) are at higher
+risk for cavities and tooth loss if habits are poor.
+</li>
+             
               </ul>
             </section>
           </article>
@@ -907,18 +977,41 @@ export default function Blog({
               </nav>
             </div>
             <div className="sidebar-card">
-              <h3 className="cta-title">Need personalized advice?</h3>
+              <h3 className="cta-title">Final Thoughts</h3>
               <p className="cta-text">
-                Book a checkup to build a prevention plan that fits your lifestyle.
+                Believing in dental myths can do more harm than good but
+thankfully, knowledge is power! The more you know, the
+better choices you can make for your oral health. At
+Symphony Dental Care, we’re always here to answer your
+questions, break down confusing information, and help you
+maintain a healthy, confident smile.
               </p>
               <div className="cta-button">
-                <a href="#" className="btn-blue">
-                  Book a checkup
+                <a href="/#contact" className="btn-blue">
+                  Book Appointment
                 </a>
               </div>
             </div>
           </aside>
         </main>
+        <div className="author-card" aria-labelledby="author-title">
+  <h3 id="author-title" className="author-title">Author</h3>
+
+  <p className="author-name">
+    Dr. Sailee Kalyankar, MDS — Founder, Symphony Dental Care (Khar/Bandra)
+  </p>
+
+  <p className="author-text">
+    Dr. Sailee is a Root Canal Specialist and an expert in Conservative Dentistry with over 8 years of experience.
+    Known for her microscopic RCT expertise, gentle techniques, and focus on pain-free dental care, she leads a skilled
+    team that offers everything from routine checkups to full mouth rehabilitation.
+  </p>
+
+  <p className="author-specialties">
+    Specialties: Painless Root Canals, Dental Implants, Braces, Cosmetic Dentistry, Pediatric Dental Care.
+  </p>
+</div>
+
       </div>
     </>
   );
