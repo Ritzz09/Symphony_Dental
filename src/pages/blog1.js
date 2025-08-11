@@ -1,960 +1,925 @@
-import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
+import React, { useEffect, useMemo, useRef } from "react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import backgroundImage from "../components/Gallery/thankyou.webp";
-import {
-  MdClose,
-  MdCheckCircle,
-  MdPhone,
-  MdWhatsapp,
-  MdLocalHospital,
-  MdMenuBook,
-} from "react-icons/md";
+import img from "../components/Gallery/thankyou.webp";
 
-gsap.registerPlugin(ScrollTrigger);
+// Inline SVG icons (no external deps)
+const IconX = (props) => (
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true" {...props}>
+    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+const IconCheck = (props) => (
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true" {...props}>
+    <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+const IconArrowRight = (props) => (
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" {...props}>
+    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
-const mythsData = [
+// Data
+const myths = [
   {
-    id: 1,
-    myth: "If my teeth don't hurt, they're fine.",
-    truth: "No pain doesn't always mean no problems.",
-    descriptionShort:
-      "Many dental issues like cavities, gum disease, or infections don't cause pain in the early stages... By the time you feel discomfort, the problem may have progressed.",
-    descriptionLong:
-      "This is one of the most dangerous myths. Many dental issues like cavities, gum disease, or infections don't cause pain in the early stages. By the time you're feeling discomfort, the problem may have already progressed. Around 60% of dental issues are symptom-free in early stages. Regular dental check-ups help detect issues early, before they turn into painful and expensive procedures.",
-    tip: "Visit your dentist every 6 months, even if everything feels okay.",
+    id: "sugar-only",
+    title: "Myth #1: If my teeth don’t hurt, they’re fine.",
+    bust:
+      "No pain doesn’t always mean no problems.",
+    desc :"This is one of the most dangerous myths. Many dental issues like cavities, gum disease, or infections don’t cause pain in the early stages. By the time you’re feeling discomfort, the problem may have already progressed. Around 60% of dental issues are symptom-free in early stages. (Source: American Dental Association) Regular dental check-ups help detect issues early, before they turn into painful and expensive procedures.",
+    tip: "Rinse after snacks, limit sipping, and brush twice daily with fluoride toothpaste.",
   },
   {
-    id: 2,
-    myth: "Brushing harder makes your teeth cleaner.",
-    truth: "Aggressive brushing can do more harm than good.",
-    descriptionShort:
-      "Brushing too hard can wear down enamel and damage your gums, leading to sensitivity and gum recession. Technique matters more than force.",
-    descriptionLong:
-      "Scrubbing your teeth like you're cleaning a dirty pan? Please stop! Brushing too hard can wear down enamel and damage your gums, leading to sensitivity and gum recession. The key is not pressure, but technique.",
-    tip: "Use a soft-bristled toothbrush, and brush gently in circular motions for two minutes.",
+    id: "hard-brush",
+    title: "Myth #2: Brushing harder cleans better",
+    bust:
+      "Aggressive brushing can wear enamel and injure gums. It doesn't remove plaque more effectively than gentle, thorough technique.",
+    tip: "Use a soft-bristle brush, 2 minutes, small circles, and light pressure.",
   },
   {
-    id: 3,
-    myth: "Sugar is the main cause of cavities.",
-    truth: "Sugar is a factor, but not the only one.",
-    descriptionShort:
-      "Sugar feeds bacteria that produce acid eroding enamel. Frequency matters more than quantity of sugar.",
-    descriptionLong:
-      "Yes, sugar feeds the bacteria in your mouth, which then produce acid that erodes enamel. But it's how often you consume sugar and your oral hygiene habits that matter more. Snacking on sweets throughout the day is more damaging than eating a dessert and brushing afterward.",
-    tip: "Rinse your mouth or brush after consuming sugary foods, and try to limit frequent snacking.",
+    id: "bleeding-normal",
+    title: "Myth #3: Bleeding gums are normal",
+    bust:
+      "Bleeding is an early sign of gum inflammation (gingivitis), not something to ignore. Left untreated, it can progress to periodontal disease.",
+    tip: "Improve flossing, brush the gumline, and see your dentist for a professional cleaning.",
   },
   {
-    id: 4,
-    myth: "Flossing isn't necessary if you brush well.",
-    truth: "Flossing cleans where your brush can't reach.",
-    descriptionShort:
-      "Toothbrushes don't clean between teeth; floss reaches where plaque and debris hide.",
-    descriptionLong:
-      "No matter how well you brush, your toothbrush can't reach between your teeth. That's where plaque and food debris love to hide. Skipping floss can lead to gum disease and cavities in those hidden spots.",
-    tip: "Make flossing a part of your nightly routine, it only takes 1-2 minutes!",
+    id: "whitening-damage",
+    title: "Myth #4: Whitening permanently damages teeth",
+    bust:
+      "Professional whitening is safe when supervised. Temporary sensitivity is common but reversible. Enamel isn't permanently harmed.",
+    tip: "Follow dentist guidance, use desensitizing toothpaste before/after.",
   },
   {
-    id: 5,
-    myth: "Whitening toothpaste will make my teeth super white.",
-    truth: "Most whitening toothpastes only remove surface stains.",
-    descriptionShort:
-      "Whitening toothpaste removes minor stains but won't change the natural tooth color significantly.",
-    descriptionLong:
-      "Whitening toothpaste can help remove minor stains from coffee or tea, but they won't dramatically change the color of your teeth. For noticeable results, professional whitening treatments are the way to go.",
-    tip:
-      "Talk to your dentist about safe and effective whitening options tailored to your needs.",
+    id: "baby-teeth",
+    title: "Myth #5: Baby teeth don't matter",
+    bust:
+      "Primary teeth guide jaw growth, speech, and nutrition. Decay can cause pain, infection, and affect developing permanent teeth.",
+    tip: "Start dental visits by age 1 and brush as soon as the first tooth erupts.",
   },
   {
-    id: 6,
-    myth: "Baby teeth don't matter, they'll fall out anyway.",
-    truth: "Healthy baby teeth are crucial for lifelong oral health.",
-    descriptionShort:
-      "Neglecting baby teeth can cause pain, infections, and affect permanent teeth alignment.",
-    descriptionLong:
-      "Neglecting baby teeth can lead to pain, infections, and problems with permanent teeth. They hold space for adult teeth and help with speech and chewing. Early dental care sets the foundation for healthy habits and smiles in the future.",
-    tip:
-      "Start dental check-ups as early as age 1, and encourage brushing habits from the start.",
+    id: "no-pain-no-visit",
+    title: "Myth #6: If nothing hurts, no dentist needed",
+    bust:
+      "Many issues are painless until advanced. Routine checkups catch problems early—easier, cheaper, and less invasive to treat.",
+    tip: "See your dentist every 6 months (or as recommended for your risk level).",
   },
   {
-    id: 7,
-    myth: "Dental treatments are always painful.",
-    truth: "Modern dentistry is surprisingly comfortable.",
-    descriptionShort:
-      "Advances in technology and care make dental visits comfortable and anxiety-free.",
-    descriptionLong:
-      "Gone are the days of painful, noisy drills and terrifying visits. With advancements in technology, numbing techniques, and patient-centered care, most procedures today are comfortable and anxiety-free. At our clinic, we go the extra mile to make sure you feel calm and cared for and might even play some music to help you relax.",
-    tip:
-      "If you have dental anxiety, don't be afraid to talk to your dentist. A good team will always work to make you feel safe and comfortable.",
+    id: "flossing-optional",
+    title: "Myth #7: Flossing is optional",
+    bust:
+      "Toothbrushes can't reach between teeth where most cavities and gum disease start. Interdental cleaning is essential.",
+    tip: "Use floss, soft picks, or water flossers daily—choose what you'll stick with.",
   },
   {
-    id: 8,
-    myth: "If I have bad breath, it means I'm not brushing enough.",
-    truth: "Bad breath can have many causes, not just poor brushing.",
-    descriptionShort:
-      "Chronic bad breath may stem from dry mouth, gum disease, foods, or medical conditions.",
-    descriptionLong:
-      "While brushing and flossing are essential, chronic bad breath (halitosis) can also stem from dry mouth, gum disease, certain foods, or medical conditions. Sometimes, it's not about brushing more but addressing the root cause.",
-    tip: "Stay hydrated, clean your tongue daily, and see your dentist if bad breath persists.",
+    id: "mouthwash-replaces",
+    title: "Myth #8: Mouthwash replaces brushing",
+    bust:
+      "Mouthwash can freshen breath and reduce bacteria, but it can't remove plaque biofilm like mechanical brushing and flossing.",
+    tip: "Use mouthwash as an adjunct—not a replacement—for daily brushing and flossing.",
   },
   {
-    id: 9,
-    myth: "It's normal for gums to bleed when brushing.",
-    truth: "Bleeding gums are a warning sign.",
-    descriptionShort:
-      "Healthy gums should not bleed on brushing or flossing; bleeding may indicate gum disease.",
-    descriptionLong:
-      "Healthy gums should not bleed when you brush or floss. If they do, it could be an early sign of gingivitis or gum disease and ignoring it can lead to serious oral health problems down the line.",
-    tip:
-      "Don't stop brushing — instead, see your dentist for an exam and improve your flossing routine.",
+    id: "fruit-healthy",
+    title: "Myth #9: Fruit juices and sparkling waters are harmless",
+    bust:
+      "Many are acidic and can erode enamel over time, even without sugar. Frequent sipping increases risk.",
+    tip: "Keep acidic drinks with meals, use a straw, and rinse with water afterward.",
   },
   {
-    id: 10,
-    myth: "All dental procedures are expensive.",
-    truth: "Preventive care is affordable and saves money long-term.",
-    descriptionShort:
-      "Routine cleanings and check-ups are affordable and prevent costly treatments later.",
-    descriptionLong:
-      "While some treatments can be costly, routine cleanings, check-ups, and early interventions are much more affordable and can prevent the need for complex (and pricey) procedures later. Prevention truly is cheaper than cure!",
-    tip:
-      "Invest in preventive care and discuss flexible payment plans with your dental office.",
+    id: "aging-teeth",
+    title: "Myth #10: Tooth loss is inevitable with age",
+    bust:
+      "With good hygiene, diet, and regular care, teeth can last a lifetime. Age alone doesn't cause tooth loss—disease does.",
+    tip: "Prioritize prevention: fluoride, cleanings, nightguards if you grind, and timely treatment.",
   },
 ];
 
-// Progress Bar Component (with percentage)
-const ProgressBar = () => {
-  const [progress, setProgress] = useState(0);
+function upsertMeta(attr, key, content) {
+  let el = document.querySelector(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
 
-  useEffect(() => {
-    const updateProgress = () => {
-      const scrolled =
-        (window.scrollY /
-          (document.documentElement.scrollHeight - window.innerHeight)) *
-        100;
-      setProgress(scrolled);
-    };
-    window.addEventListener("scroll", updateProgress);
-    return () => window.removeEventListener("scroll", updateProgress);
-  }, []);
+function upsertLink(rel, href) {
+  let el = document.querySelector(`link[rel="${rel}"]`);
+  if (!el) {
+    el = document.createElement("link");
+    el.setAttribute("rel", rel);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("href", href);
+}
 
-  return (
-    <div style={styles.progressBarContainer}>
-      <div style={{ ...styles.progressBar, width: `${progress}%` }} />
-      <div style={styles.progressText}>{Math.round(progress)}%</div>
-    </div>
-  );
-};
+function upsertJsonLd(id, json) {
+  let el = document.getElementById(id);
+  if (!el) {
+    el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.id = id;
+    document.head.appendChild(el);
+  }
+  el.textContent = JSON.stringify(json);
+}
 
-// Floating Particles Component
-const FloatingParticles = () => {
-  const particlesRef = useRef(null);
+export default function Blog({
+  heroSrc = img,
+  publisherName = "Dental Insights",
+  authorName = "Dr. Jane Smith, DDS",
+  basePath = "/blog/dental-myths-busted",
+}) {
+  const rootRef = useRef(null);
+  const heroRef = useRef(null);
+  const heroImgRef = useRef(null);
+  const articleRef = useRef(null);
+  const progressRef = useRef(null);
+  const cardsRef = useRef([]);
 
-  useEffect(() => {
-    const particles = [];
-    const colors = [
-      "rgba(52, 152, 219, 0.6)",
-      "rgba(46, 204, 113, 0.6)",
-      "rgba(155, 89, 182, 0.6)",
-      "rgba(231, 76, 60, 0.6)",
-    ];
-
-    for (let i = 0; i < 30; i++) {
-      const particle = document.createElement("div");
-      const size = Math.random() * 6 + 2;
-      particle.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        background: ${colors[Math.floor(Math.random() * colors.length)]};
-        border-radius: 50%;
-        pointer-events: none;
-        box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
-      `;
-      particlesRef.current.appendChild(particle);
-      particles.push(particle);
+  const canonical = useMemo(() => {
+    if (typeof window !== "undefined") {
+      return `${window.location.origin}${basePath}`;
     }
+    return `https://example.com${basePath}`;
+  }, [basePath]);
 
-    particles.forEach((particle, i) => {
-      gsap.set(particle, {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-      });
-
-      gsap.to(particle, {
-        y: "-=200",
-        x: `+=${Math.random() * 300 - 150}`,
-        rotation: 360,
-        duration: Math.random() * 15 + 8,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: i * 0.1,
-      });
-    });
-
-    return () => {
-      particles.forEach((particle) => particle.remove());
-    };
-  }, []);
-
-  return <div ref={particlesRef} style={styles.particlesContainer} />;
-};
-
-// Enhanced Side Navigation (hidden on mobile)
-const SideNav = ({ myths }) => {
-  const [activeId, setActiveId] = useState(null);
-  const [isVisible, setIsVisible] = useState(window.innerWidth > 768);
-  const navRef = useRef(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsVisible(window.innerWidth > 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const sections = myths.map((m) => document.getElementById(`section-${m.id}`));
-    const onScroll = () => {
-      const scrollPos = window.scrollY + window.innerHeight / 2;
-      let current = null;
-      sections.forEach((section) => {
-        if (section && section.offsetTop <= scrollPos) {
-          current = section.id;
-        }
-      });
-      setActiveId(current);
-    };
-    window.addEventListener("scroll", onScroll);
-    onScroll();
-
-    if (navRef.current && isVisible) {
-      gsap.fromTo(
-        navRef.current.children,
-        { x: -50, opacity: 0, scale: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          delay: 2,
-          ease: "back.out(1.7)",
-        }
-      );
-    }
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [myths, isVisible]);
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+  // Spotlight mouse position
+  const onMouseMove = (e) => {
+    const el = heroRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--y", `${e.clientY - rect.top}px`);
   };
 
-  if (!isVisible) return null;
-
-  return (
-    <nav
-      ref={navRef}
-      aria-label="Section navigation"
-      style={styles.sideNav}
-      role="navigation"
-    >
-      {myths.map(({ id }, index) => (
-        <button
-          key={id}
-          onClick={() => scrollToSection(`section-${id}`)}
-          style={{
-            ...styles.sideNavButton,
-            ...(activeId === `section-${id}` ? styles.sideNavActive : {}),
-          }}
-          onMouseEnter={(e) => {
-            gsap.to(e.target, {
-              scale: 1.3,
-              rotationY: 180,
-              boxShadow: "0 8px 25px rgba(52, 152, 219, 0.6)",
-              duration: 0.3,
-            });
-          }}
-          onMouseLeave={(e) => {
-            gsap.to(e.target, {
-              scale: 1,
-              rotationY: 0,
-              boxShadow: "0 4px 15px rgba(52, 152, 219, 0.3)",
-              duration: 0.3,
-            });
-          }}
-          aria-current={activeId === `section-${id}` ? "true" : undefined}
-          aria-label={`Navigate to myth ${index + 1}`}
-          title={`Go to Myth ${index + 1}`}
-          type="button"
-        >
-          {index + 1}
-        </button>
-      ))}
-    </nav>
-  );
-};
-
-// Back to Top Button
-const BackToTop = () => {
-  const [visible, setVisible] = useState(false);
-  const buttonRef = useRef(null);
-
+  // SEO + JSON-LD
   useEffect(() => {
-    const toggleVisibility = () => {
-      setVisible(window.scrollY > 300);
+    const title = "Top 10 Dental Myths busted by a Dentist";
+    const description =
+      "What do you think you know vs What’s actually true!";
+    document.title = title;
+    upsertMeta("name", "description", description);
+    upsertLink("canonical", canonical);
+    upsertMeta("property", "og:title", title);
+    upsertMeta("property", "og:description", description);
+    upsertMeta("property", "og:type", "article");
+    upsertMeta("property", "og:url", canonical);
+    upsertMeta("property", "og:image", heroSrc);
+    upsertMeta("name", "twitter:card", "summary_large_image");
+    upsertMeta("name", "twitter:title", title);
+    upsertMeta("name", "twitter:description", description);
+    upsertMeta("name", "twitter:image", heroSrc);
+
+    const articleLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: title,
+      image: [heroSrc],
+      author: { "@type": "Person", name: authorName },
+      publisher: {
+        "@type": "Organization",
+        name: publisherName,
+        logo: {
+          "@type": "ImageObject",
+          url:
+            typeof window !== "undefined"
+              ? `${window.location.origin}/favicon.ico`
+              : "/favicon.ico",
+        },
+      },
+      datePublished: new Date().toISOString(),
+      description,
+      mainEntityOfPage: canonical,
     };
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
 
+    const faqLd = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: myths.map((m) => ({
+        "@type": "Question",
+        name: m.title.replace(/Myth #\\d+:\\s*/, ""),
+        acceptedAnswer: { "@type": "Answer", text: m.bust },
+      })),
+    };
+
+    upsertJsonLd("ld-article", articleLd);
+    upsertJsonLd("ld-faq", faqLd);
+  }, [authorName, publisherName, canonical, heroSrc]);
+
+  // GSAP animations
   useEffect(() => {
-    if (buttonRef.current) {
-      if (visible) {
-        gsap.to(buttonRef.current, {
-          scale: 1,
-          opacity: 1,
-          rotation: 0,
-          duration: 0.5,
-          ease: "back.out(1.7)",
-        });
-      } else {
-        gsap.to(buttonRef.current, {
-          scale: 0,
-          opacity: 0,
-          rotation: 180,
-          duration: 0.3,
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (reduce) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // Intro stagger
+      gsap.from(".hero-seq", {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+      });
+
+      // Parallax hero image
+      if (heroRef.current && heroImgRef.current) {
+        gsap.to(heroImgRef.current, {
+          yPercent: -10,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
         });
       }
-    }
-  }, [visible]);
 
-  const scrollTopHandler = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+      // Card reveal
+      cardsRef.current.forEach((el) => {
+        if (!el) return;
+        gsap.from(el, {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
 
- 
-};
-
-// Header Stats Component
-const HeaderStats = () => {
-  const statsRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".stat-item",
-        { y: 50, opacity: 0, scale: 0.8 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          stagger: 0.2,
-          delay: 2.5,
-          ease: "back.out(1.7)",
-        }
-      );
-    }, statsRef);
+      // Reading progress
+      if (progressRef.current && articleRef.current) {
+        gsap.set(progressRef.current, { scaleX: 0, transformOrigin: "left center" });
+        ScrollTrigger.create({
+          trigger: articleRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          onUpdate: (self) => {
+            gsap.to(progressRef.current, { scaleX: self.progress, ease: "none", overwrite: true });
+          },
+        });
+      }
+    }, rootRef);
 
     return () => ctx.revert();
   }, []);
 
-  const stats = [
-    { icon: <MdLocalHospital />, number: "3.5B", label: "People with oral diseases" },
-    { icon: <MdMenuBook />, number: "10", label: "Myths busted today" },
-    { icon: <MdCheckCircle />, number: "100%", label: "Evidence-based facts" },
-  ];
-
-  return (
-    <div ref={statsRef} style={styles.statsContainer}>
-      {stats.map((stat, index) => (
-        <div
-          key={index}
-          className="stat-item"
-          style={styles.statItem}
-          onMouseEnter={(e) => {
-            gsap.to(e.currentTarget, {
-              y: -10,
-              scale: 1.1,
-              boxShadow: "0 15px 35px rgba(52, 152, 219, 0.4)",
-              duration: 0.3,
-            });
-          }}
-          onMouseLeave={(e) => {
-            gsap.to(e.currentTarget, {
-              y: 0,
-              scale: 1,
-              boxShadow: "0 8px 25px rgba(0,0,0,0.1)",
-              duration: 0.3,
-            });
-          }}
-          tabIndex={0}
-          role="group"
-          aria-label={`${stat.number} - ${stat.label}`}
-        >
-          <div style={styles.statIcon}>{stat.icon}</div>
-          <div style={styles.statNumber}>{stat.number}</div>
-          <div style={styles.statLabel}>{stat.label}</div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const DentalMythsBlog = () => {
-  const containerRef = useRef(null);
-  const headerRef = useRef(null);
-
-  useEffect(() => {
-    const headerCtx = gsap.context(() => {
-      const tl = gsap.timeline();
-
-      // Enhanced header animations
-      tl.fromTo(
-        headerRef.current.querySelector("h1"),
-        { autoAlpha: 0, y: 80, scale: 0.8 },
-        { autoAlpha: 1, y: 0, scale: 1, duration: 2, ease: "power3.out" }
-      )
-        .fromTo(
-          headerRef.current.querySelector("p.subtitle"),
-          { autoAlpha: 0, x: -60, rotationX: 45 },
-          { autoAlpha: 1, x: 0, rotationX: 0, duration: 1.5, ease: "power3.out" },
-          "-=1.2"
-        )
-        .fromTo(
-          headerRef.current.querySelector("p.disc"),
-          { autoAlpha: 0, y: 40, scale: 0.9 },
-          { autoAlpha: 1, y: 0, scale: 1, duration: 1.3, ease: "power3.out" },
-          "-=1"
-        );
-    }, headerRef);
-
-    const ctx = gsap.context(() => {
-      // Enhanced section animations with mobile adjustments
-      gsap.utils.toArray(".section").forEach((section, index) => {
-        const isMobile = window.innerWidth <= 768;
-        const fromY = isMobile ? 50 : index % 4 < 2 ? 100 : -100;
-
-        gsap.fromTo(
-          section,
-          { autoAlpha: 0, y: fromY, scale: 0.8 },
-          {
-            duration: 1,
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: section,
-              start: isMobile ? "top 85%" : "top 75%",
-              toggleActions: "play none none reverse",
-              scrub: false,
-            },
-          }
-        );
-      });
-
-      // Enhanced badge hover animations
-          }, containerRef);
-
-    return () => {
-      headerCtx.revert();
-      ctx.revert();
-    };
-  }, []);
-
   return (
     <>
-      <ProgressBar />
-      <FloatingParticles />
-      <SideNav myths={mythsData} />
-    
-      <div style={styles.whole}>
-        <div style={styles.pageOverlay} />
-        <div ref={containerRef} style={styles.page}>
-          <header ref={headerRef} style={styles.header}>
-            <h1 style={styles.title}>
-              Top 10 Dental Myths Busted by a Dentist
-            </h1>
-            <p className="subtitle" style={styles.subtitle}>
-              What do you think you know vs What's actually true! ✨
-            </p>
+      <style>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
 
-            <HeaderStats />
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+          line-height: 1.6;
+          color: #374151;
+          background-color: #ffffff;
+        }
 
-            <p className="disc" style={styles.disc}>
-              We all grow up hearing a lot about dental care, from parents,
-              friends, or even social media. But how much of it is actually
-              true? As dental professionals, we come across a surprising number
-              of myths and misconceptions every day. Some may seem harmless, but
-              believing them can lead to poor oral health in the long run.
-              <br />
-              According to the World Health Organization (WHO), nearly 3.5
-              billion people worldwide suffer from oral diseases — and much of
-              this is preventable with the right care and knowledge.
-              <br />
-              <br />
-              Let's bust some of the most common dental myths once and for all!
-              🦷
-            </p>
-          </header>
+        @media (prefers-color-scheme: dark) {
+          body {
+            color: #f3f4f6;
+            background-color: #0f0f0f;
+          }
+        }
 
-          {mythsData.map(({ id, myth, truth, descriptionLong, tip }, index) => (
-            <section
-              key={id}
-              className="section"
-              id={`section-${id}`}
-              style={{
-                ...styles.section,
-                flexDirection: "column",
-                textAlign: "center",
-              }}
-              aria-labelledby={`myth-title-${id}`}
-              onMouseEnter={(e) => {
-                gsap.to(e.currentTarget, {
-                  scale: 1.02,
-                  y: -5,
-                  boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
-                  duration: 0.4,
-                });
-              }}
-              onMouseLeave={(e) => {
-                gsap.to(e.currentTarget, {
-                  scale: 1,
-                  y: 0,
-                  boxShadow: "0 8px 25px rgba(0,0,0,0.1)",
-                  duration: 0.4,
-                });
-              }}
-            >
-              
-              <div
-                style={{
-                  ...styles.textContainer,
-                  maxWidth: "100%",
-                  paddingLeft: 0,
-                  paddingRight: 0,
-                }}
-              >
-                <h3
-                  id={`myth-title-${id}`}
-                  style={{
-                    ...styles.mythTitle,
-                    color: "#ff6b6b",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "1rem",
-                    justifyContent: "center",
-                    flexWrap: "nowrap", // Allow wrapping on narrow screens
-                    fontWeight: "700",
-                    whiteSpace: "normal", // prevent cutoff
-                    maxWidth: "90vw",
-                    margin: "0 auto",
-                  }}
-                >
-                  <MdClose aria-hidden="true" size={28} />
-                  {myth}
-                </h3>
-                <h3
-                  style={{
-                    ...styles.truthTitle,
-                    color: "#2ecc71",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "1rem",
-                    justifyContent: "center",
-                    flexWrap: "nowrap", // Allow wrapping on narrow screens
-                    fontWeight: "700",
-                    whiteSpace: "normal",
-                    maxWidth: "90vw",
-                    margin: "0 auto",
-                  }}
-                >
-                  <MdCheckCircle aria-hidden="true" size={28} />
-                  {truth}
-                </h3>
-                <p
-                  style={{
-                    marginTop: "1rem",
-                    lineHeight: 1.6,
-                    fontSize: "1.1rem",
-                    maxWidth: "90vw",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                  }}
-                >
-                  {descriptionLong}
-                </p>
-                <p
-                  style={{
-                    ...styles.tip,
-                    color: "#d3f9d8",
-                    marginTop: "1.5rem",
-                    maxWidth: "90vw",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    paddingLeft: "1rem",
-                    paddingRight: "1rem",
-                  }}
-                >
-                  <strong>💡 Tip:</strong> {tip}
-                </p>
-              </div>
-            </section>
-          ))}
+        /* Progress Bar */
+        .progress-bar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 4px;
+          background-color: rgba(59, 130, 246, 0.8);
+          z-index: 50;
+          width: 100%;
+          transform-origin: left center;
+          transform: scaleX(0);
+        }
 
-          <footer style={styles.footer} role="contentinfo">
-            <div style={styles.footerContent}>
-              <p style={styles.footerText}>
-                🦷 Empower your smile with knowledge. Visit Symphony Dental Care
-                for expert advice.
+        @media (prefers-color-scheme: dark) {
+          .progress-bar {
+            background-color: rgba(96, 165, 250, 0.8);
+          }
+        }
+
+        /* Spotlight Effect */
+        .spotlight {
+          position: relative;
+          isolation: isolate;
+        }
+
+        .spotlight::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 0;
+          background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%),
+            hsl(210 100% 60% / 0.18), transparent 40%);
+          transition: background 150ms ease-out;
+        }
+
+        /* Story Link Underline Effect */
+        .story-link {
+          position: relative;
+          display: inline-block;
+          text-decoration: none;
+        }
+
+        .story-link::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -2px;
+          height: 2px;
+          width: 100%;
+          background: currentColor;
+          transform: scaleX(0);
+          transform-origin: 100% 50%;
+          transition: transform 0.3s ease;
+        }
+
+        .story-link:hover::after {
+          transform: scaleX(1);
+          transform-origin: 0% 50%;
+        }
+
+        /* Hover Scale Effect */
+        .hover-scale {
+          transition: transform 0.2s ease;
+        }
+
+        .hover-scale:hover {
+          transform: scale(1.05);
+        }
+
+        /* Container */
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+          position: relative;
+        }
+
+        .hero-bg {
+          position: absolute;
+          inset: 0;
+          z-index: -10;
+          overflow: hidden;
+        }
+
+        .hero-img {
+          width: 100%;
+          height: 46vh;
+          object-fit: cover;
+        }
+
+        @media (min-width: 640px) {
+          .hero-img {
+            height: 65vh;
+          }
+        }
+
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to bottom, 
+            rgba(0, 0, 0, 0.1) 0%, 
+            rgba(0, 0, 0, 0.1) 50%, 
+            rgba(0, 0, 0, 0) 100%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .hero-overlay {
+            background: linear-gradient(to bottom, 
+              rgba(0, 0, 0, 0.2) 0%, 
+              rgba(0, 0, 0, 0.3) 50%, 
+              rgba(0, 0, 0, 0.7) 100%);
+          }
+        }
+
+        .hero-content {
+          padding: 40px 24px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+          .hero-content {
+            padding: 56px 24px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .hero-content {
+            padding: 80px 24px;
+          }
+        }
+
+        .hero-text {
+          max-width: 768px;
+          color: white;
+        }
+
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 14px;
+          line-height: 1.5;
+          color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-title {
+          margin-top: 12px;
+          font-size: 30px;
+          font-weight: 600;
+          line-height: 1.1;
+        }
+
+        @media (min-width: 640px) {
+          .hero-title {
+            font-size: 36px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .hero-title {
+            font-size: 48px;
+          }
+        }
+
+        .hero-description {
+          margin-top: 16px;
+          max-width: 512px;
+          color: rgba(255, 255, 255, 0.85);
+        }
+
+        .hero-actions {
+          margin-top: 24px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+          display: inline-flex;
+          align-items: center;
+          padding: 8px 16px;
+          border-radius: 8px;
+          background-color: rgba(255, 255, 255, 0.9);
+          color: #111827;
+          font-weight: 500;
+          text-decoration: none;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+          background-color: white;
+          transform: scale(1.05);
+        }
+
+        .btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          color: rgba(255, 255, 255, 0.9);
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+          color: white;
+        }
+
+        .btn-blue {
+          display: inline-flex;
+          align-items: center;
+          padding: 8px 16px;
+          border-radius: 8px;
+          background-color: #2563eb;
+          color: white;
+          font-weight: 500;
+          text-decoration: none;
+          transition: background-color 0.2s ease;
+        }
+
+        .btn-blue:hover {
+          background-color: #1d4ed8;
+        }
+
+        /* Main Content */
+        .main-content {
+          max-width: 90%;
+          margin: 0 auto;
+          padding: 40px 24px;
+          display: grid;
+          gap: 40px;
+        }
+
+        @media (min-width: 1024px) {
+          .main-content {
+            padding: 64px 24px;
+            grid-template-columns: 1fr 320px;
+          }
+        }
+
+        /* Article */
+        .article {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        /* Myth Cards */
+        .myth-card {
+          position: relative;
+          overflow: hidden;
+          border-radius: 8px;
+          border: 1px solid #e5e7eb;
+          background-color: white;
+          padding: 24px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .myth-card {
+            border-color: rgba(255, 255, 255, 0.1);
+            background-color: #171717;
+          }
+        }
+
+        .myth-header {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .myth-icon-x {
+          margin-top: 4px;
+          color: #ef4444;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .myth-icon-x {
+            color: #f87171;
+          }
+        }
+
+        .myth-title {
+          font-size: 20px;
+          font-weight: 600;
+        }
+
+        @media (min-width: 640px) {
+          .myth-title {
+            font-size: 24px;
+          }
+        }
+
+        .myth-content {
+          margin-top: 12px;
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .myth-icon-check {
+          margin-top: 4px;
+          color: #059669;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .myth-icon-check {
+            color: #34d399;
+          }
+        }
+
+        .myth-text {
+          font-size: 16px;
+          color: #1f2937;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .myth-text {
+            color: #e5e7eb;
+          }
+        }
+
+        .myth-tip {
+          margin-top: 12px;
+          font-size: 14px;
+          color: #6b7280;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .myth-tip {
+            color: #9ca3af;
+          }
+        }
+
+        /* Prevention Section */
+        .prevention-section {
+          border-radius: 8px;
+          border: 1px solid #e5e7eb;
+          background-color: white;
+          padding: 24px;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .prevention-section {
+            border-color: rgba(255, 255, 255, 0.1);
+            background-color: #171717;
+          }
+        }
+
+        .prevention-title {
+          font-size: 24px;
+          font-weight: 600;
+        }
+
+        .prevention-list {
+          margin-top: 12px;
+          display: grid;
+          gap: 8px;
+          color: #4b5563;
+          list-style: none;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .prevention-list {
+            color: #d1d5db;
+          }
+        }
+
+        .prevention-list li {
+          position: relative;
+          padding-left: 16px;
+        }
+
+        .prevention-list li::before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          color: #2563eb;
+          font-weight: bold;
+        }
+
+        /* Sidebar */
+        .sidebar {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        @media (min-width: 1024px) {
+          .sidebar {
+            position: sticky;
+            top: 80px;
+            height: max-content;
+          }
+        }
+
+        .sidebar-card {
+          border-radius: 8px;
+          border: 1px solid #e5e7eb;
+          background-color: white;
+          padding: 24px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .sidebar-card {
+            border-color: rgba(255, 255, 255, 0.1);
+            background-color: #171717;
+          }
+        }
+
+        .sidebar-title {
+          font-size: 20px;
+          font-weight: 600;
+        }
+
+        .sidebar-nav {
+          margin-top: 12px;
+        }
+
+        .sidebar-nav ol {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          font-size: 14px;
+          list-style: none;
+        }
+
+        .sidebar-nav a {
+          color: rgba(31, 41, 55, 0.8);
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+
+        .sidebar-nav a:hover {
+          color: #111827;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .sidebar-nav a {
+            color: rgba(243, 244, 246, 0.8);
+          }
+
+          .sidebar-nav a:hover {
+            color: white;
+          }
+        }
+
+        .cta-title {
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .cta-text {
+          margin-top: 8px;
+          font-size: 14px;
+          color: #6b7280;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .cta-text {
+            color: #9ca3af;
+          }
+        }
+
+        .cta-button {
+          margin-top: 12px;
+        }
+
+        /* Utilities */
+        .ml-2 {
+          margin-left: 8px;
+        }
+
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+      `}</style>
+
+      <div ref={rootRef}>
+        {/* Reading progress */}
+        <div
+          ref={progressRef}
+          className="progress-bar"
+          aria-hidden="true"
+        />
+
+        {/* Hero */}
+        <header
+          ref={heroRef}
+          onMouseMove={onMouseMove}
+          className="hero spotlight"
+          aria-label="Article header"
+        >
+          <div className="hero-bg">
+            <img
+              ref={heroImgRef}
+              src={heroSrc}
+              alt="Smiling dentist in modern clinic with clean dental aesthetic"
+              className="hero-img"
+              loading="eager"
+              decoding="async"
+            />
+            <div className="hero-overlay" />
+          </div>
+
+          <div className="hero-content">
+            <div className="hero-text">
+              <p className="hero-seq hero-badge">
+                What do you think you know vs What’s
+actually true!
               </p>
-              <p
-                style={{
-                  fontStyle: "italic",
-                  marginTop: "0.5rem",
-                  fontSize: "0.9rem",
-                }}
-              >
-                Author: Dr. Sailee Kalyankar, MDS - Founder – Symphony Dental
-                Care, Khar/Bandra
+              <h1 className="hero-seq hero-title">
+                Top 10 Dental Myths busted by a Dentist
+              </h1>
+              <p className="hero-seq hero-description">
+               We all grow up hearing a lot about dental care, from parents,
+friends, or even social media. But how much of it is actually
+true? As dental professionals, we come across a surprising
+number of myths and misconceptions every day. Some may
+seem harmless, but believing them can lead to poor oral health
+in the long run.
+According to the World Health Organization (WHO), nearly
+3.5 billion people worldwide suffer from oral diseases — and
+much of this is preventable with the right care and knowledge.
+Let’s bust some of the most common dental myths once and
+for all!
               </p>
-              <div style={styles.footerIcons}>
-                <MdPhone size={24} style={styles.footerIcon} />
-                <MdWhatsapp size={24} style={styles.footerIcon} />
-                <MdLocalHospital size={24} style={styles.footerIcon} />
+              <div className="hero-seq hero-actions">
+                <a href="#myths" className="hover-scale btn-primary">
+                  Read article <IconArrowRight className="ml-2" />
+                </a>
+                <a href="#prevention" className="story-link btn-secondary">
+                  Prevention tips
+                </a>
               </div>
             </div>
-          </footer>
-        </div>
+          </div>
+        </header>
+
+        {/* Content */}
+        <main className="main-content">
+          <article id="myths" ref={articleRef} className="article">
+            {myths.map((m, idx) => (
+              <div
+                key={m.id}
+                id={m.id}
+                ref={(el) => { cardsRef.current[idx] = el; }}
+                className="myth-card"
+              >
+                <div className="myth-header">
+                  <div className="myth-icon-x" aria-hidden="true">
+                    <IconX width={24} height={24} />
+                  </div>
+                  <h2 className="myth-title">{m.title}</h2>
+                </div>
+                <div className="myth-content">
+                  <div className="myth-icon-check" aria-hidden="true">
+                    <IconCheck width={20} height={20} />
+                  </div>
+                  <p className="myth-text">{m.bust}</p>
+           
+                </div>
+                 <p className="myth-text">{m.desc}</p>
+                {m.tip && (
+                  <p className="myth-tip">
+                    Tip: {m.tip}
+                  </p>
+                )}
+              </div>
+            ))}
+
+            <section id="prevention" className="prevention-section">
+              <h2 className="prevention-title">Simple prevention framework</h2>
+              <ul className="prevention-list">
+                <li>Brush 2x/day with fluoride · 2 minutes · soft bristles</li>
+                <li>Clean between daily (floss, picks, or water flosser)</li>
+                <li>Limit frequent snacking and acidic sipping</li>
+                <li>Dental checkups and cleanings every 6 months</li>
+              </ul>
+            </section>
+          </article>
+
+          <aside className="sidebar">
+            <div className="sidebar-card">
+              <h2 className="sidebar-title">Contents</h2>
+              <nav className="sidebar-nav">
+                <ol>
+                  {myths.map((m) => (
+                    <li key={m.id}>
+                      <a href={`#${m.id}`} className="story-link">
+                        {m.title}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </div>
+            <div className="sidebar-card">
+              <h3 className="cta-title">Need personalized advice?</h3>
+              <p className="cta-text">
+                Book a checkup to build a prevention plan that fits your lifestyle.
+              </p>
+              <div className="cta-button">
+                <a href="#" className="btn-blue">
+                  Book a checkup
+                </a>
+              </div>
+            </div>
+          </aside>
+        </main>
       </div>
     </>
   );
-};
-
-const styles = {
-  progressBarContainer: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "6px",
-    backgroundColor: "rgba(255,255,255,0.1)",
-    zIndex: 10001,
-    backdropFilter: "blur(10px)",
-  },
-  progressBar: {
-    height: "100%",
-    background:
-      "linear-gradient(90deg, #3498DB, #2ecc71, #e74c3c, #f39c12)",
-    backgroundSize: "200% 100%",
-    animation: "gradientShift 3s ease infinite",
-    transition: "width 0.3s ease",
-    boxShadow: "0 2px 10px rgba(52, 152, 219, 0.5)",
-  },
-  progressText: {
-    position: "absolute",
-    right: "20px",
-    top: "50%",
-    transform: "translateY(-50%)",
-    color: "white",
-    fontSize: "12px",
-    fontWeight: "bold",
-  },
-  particlesContainer: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    pointerEvents: "none",
-    zIndex: 1,
-  },
-  whole: {
-    position: "relative",
-    minHeight: "100vh",
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center center",
-    backgroundRepeat: "no-repeat",
-    backgroundAttachment: window.innerWidth > 768 ? "fixed" : "scroll",
-    overflowX: "hidden",
-    zIndex: 0,
-  },
-  pageOverlay: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100vw",
-    height: "100vh",
-    backgroundColor: "rgba(0,0,0,0.85)",
-    backdropFilter: "blur(2px)",
-    zIndex: 0,
-    pointerEvents: "none",
-  },
-  page: {
-    maxWidth: 900,
-    margin: "0 auto",
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    color: "#fff",
-    padding: "0 1rem",
-    position: "relative",
-    zIndex: 2,
-    paddingBottom: window.innerWidth <= 768 ? "6rem" : "0",
-    boxSizing: "border-box",
-  },
-  header: {
-    textAlign: "center",
-    marginBottom: "clamp(2rem, 5vw, 4rem)",
-    padding: "2rem 0",
-  },
-  title: {
-    fontSize: "clamp(2rem, 6vw, 3.8rem)",
-    background:
-      "linear-gradient(45deg, #1559a0 0%, #6372ff 50%, #2ecc71 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    fontWeight: "bold",
-    display: "inline-block",
-    marginBottom: "1rem",
-    textShadow: "0 0 30px rgba(52, 152, 219, 0.5)",
-    lineHeight: 1.2,
-  },
-  subtitle: {
-    fontSize: "clamp(1rem, 4vw, 1.8rem)",
-    color: "#0071A4",
-    fontStyle: "italic",
-    marginBottom: "2rem",
-    textShadow: "0 2px 10px rgba(0,0,0,0.3)",
-  },
-  disc: {
-    fontSize: "clamp(1rem, 3vw, 1.3rem)",
-    color: "white",
-    maxWidth: "800px",
-    margin: "auto",
-    lineHeight: "1.8",
-    textShadow: "0 2px 5px rgba(0,0,0,0.3)",
-  },
-  statsContainer: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "2rem",
-    margin: "2rem 0 3rem",
-    flexWrap: "wrap",
-  },
-  statItem: {
-    backgroundColor: "rgba(255,255,255,0.1)",
-    padding: "1.5rem",
-    borderRadius: "15px",
-    textAlign: "center",
-    backdropFilter: "blur(10px)",
-    border: "1px solid rgba(255,255,255,0.2)",
-    cursor: "pointer",
-    minWidth: "120px",
-  },
-  statIcon: {
-    fontSize: "2rem",
-    color: "#3498DB",
-    marginBottom: "0.5rem",
-  },
-  statNumber: {
-    fontSize: "1.8rem",
-    fontWeight: "bold",
-    color: "#2ecc71",
-    marginBottom: "0.3rem",
-  },
-  statLabel: {
-    fontSize: "0.9rem",
-    color: "#bbb",
-  },
-  section: {
-    display: "flex",
-    alignItems: "center",
-    padding: "3rem 2rem",
-    borderRadius: "20px",
-    boxShadow: "0 8px 25px rgba(0,0,0,0.1)",
-    marginBottom: "4rem",
-    position: "relative",
-    overflow: "hidden",
-    zIndex: 100,
-    backgroundColor: "rgba(0, 59, 81, 0.95)",
-    border: "2px solid rgba(255,255,255,0.1)",
-    transition: "all 0.4s ease",
-    backdropFilter: "blur(10px)",
-    flexDirection: "column",
-    textAlign: "center",
-  },
-  textContainer: {
-    maxWidth: "100%",
-    position: "relative",
-    zIndex: 3,
-    paddingLeft: 0,
-    paddingRight: 0,
-    marginTop: 0,
-  },
-  numberBadge: {
-    position: "absolute",
-    top: "1rem",
-    left: "50%",
-    transform: "translateX(-50%)",
-    marginBottom: "1rem",
-    backgroundColor: "#3498DB",
-    color: "white",
-    borderRadius: "50%",
-    width: "4rem",
-    height: "4rem",
-    fontSize: "1.8rem",
-    fontWeight: "bold",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    boxShadow: "0 4px 15px rgba(52, 152, 219, 0.7)",
-    cursor: "default",
-    userSelect: "none",
-    transition: "all 0.3s ease",
-    zIndex: 4,
-    border: "3px solid rgba(255,255,255,0.2)",
-    pointerEvents: "none",
-  },
-  mythTitle: {
-    fontSize: "clamp(1rem, 4vw, 1.8rem)",
-    marginBottom: "1rem",
-    fontWeight: "700",
-  },
-  truthTitle: {
-    fontSize: "clamp(1rem, 4vw, 1.8rem)",
-    marginBottom: "1.5rem",
-    fontWeight: "700",
-  },
-  tip: {
-    fontWeight: "bold",
-    paddingLeft: "1rem",
-    borderLeft: "5px solid #27AE60",
-    fontSize: "clamp(0.95rem, 3vw, 1.1rem)",
-    backgroundColor: "rgba(39, 174, 96, 0.1)",
-    padding: "1rem 1.5rem",
-    borderRadius: "8px",
-    marginTop: "1.5rem",
-    backdropFilter: "blur(5px)",
-    maxWidth: "90vw",
-    marginLeft: "auto",
-    marginRight: "auto",
-    textAlign: "left",
-  },
-  footer: {
-    marginTop: "6rem",
-    textAlign: "center",
-    fontSize: "clamp(1rem, 3vw, 1.1rem)",
-    padding: window.innerWidth <= 768 ? "3rem 1rem 5rem 1rem" : "3rem 2rem 3rem 2rem",
-    backgroundColor: "rgba(0,0,0,0.5)",
-    borderRadius: "20px",
-    backdropFilter: "blur(10px)",
-    border: "1px solid rgba(255,255,255,0.1)",
-    boxSizing: "border-box",
-  },
-  footerContent: {
-    maxWidth: "600px",
-    margin: "0 auto",
-  },
-  footerText: {
-    fontSize: "1.2rem",
-    marginBottom: "1rem",
-  },
-  footerIcons: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "1rem",
-    marginTop: "1.5rem",
-  },
-  footerIcon: {
-    cursor: "pointer",
-    transition: "all 0.3s ease",
-    color: "#3498DB",
-  },
-  sideNav: {
-    position: "fixed",
-    top: "15%",
-    left: "20px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "12px",
-    zIndex: 10000,
-  },
-  sideNavButton: {
-    width: "50px",
-    height: "50px",
-    borderRadius: "50%",
-    border: "3px solid #3498DB",
-    background: "rgba(255,255,255,0.1)",
-    cursor: "pointer",
-    fontWeight: "bold",
-    fontSize: "1.2rem",
-    color: "#3498DB",
-    outline: "none",
-    transition: "all 0.3s ease",
-    userSelect: "none",
-    backdropFilter: "blur(10px)",
-    boxShadow: "0 4px 15px rgba(52, 152, 219, 0.3)",
-  },
-  sideNavActive: {
-    backgroundColor: "#3498DB",
-    color: "white",
-    boxShadow: "0 0 25px #3498DB",
-    scale: "1.15",
-  },
-  backToTopButton: {
-    position: "fixed",
-    bottom: window.innerWidth <= 768 ? "20px" : "30px",
-    right: window.innerWidth <= 768 ? "20px" : "30px",
-    padding: "1rem",
-    fontSize: "1.5rem",
-    borderRadius: "50%",
-    border: "none",
-    backgroundColor: "#3498DB",
-    color: "white",
-    cursor: "pointer",
-    boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
-    zIndex: 10000,
-    userSelect: "none",
-    width: "60px",
-    height: "60px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backdropFilter: "blur(10px)",
-    transition: "all 0.3s ease",
-    scale: 0,
-    opacity: 0,
-  },
-};
-
-// Add CSS keyframes for animated gradient and responsive adjustments
-const styleSheet = document.createElement("style");
-styleSheet.type = "text/css";
-styleSheet.innerText = `
-  @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  @media (max-width: 768px) {
-    .section {
-      padding: 2rem 1rem !important;
-      margin-bottom: 3rem !important;
-    }
-    .tip {
-      max-width: 90vw !important;
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
-    }
-  }
-`;
-document.head.appendChild(styleSheet);
-
-export default DentalMythsBlog;
+}

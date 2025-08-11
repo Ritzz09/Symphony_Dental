@@ -14,7 +14,8 @@ import FAQ from "./components/faqs";
 import { About_Dentist } from "./components/about_dentist";
 import ScrollToTop from "./components/scroll";
 import ThankYou from "./components/thankyou"; 
-import DentalMythsBlog from "./pages/blog1";
+import Blog from "./pages/blog1";
+
 import "./App.css";
 import SEO from "./components/SEO";
 <link rel="stylesheet" href="%PUBLIC_URL%/css/style.css" />
@@ -65,7 +66,9 @@ const App = () => {
           }
         />
         <Route path="/thankyou" element={<ThankYou />} />
-        <Route  path="/pages/blog1" element={<DentalMythsBlog />} />
+
+        <Route  path="/pages/blog1" element={<Blog />} />
+
       </Routes>
     </Router>
   );

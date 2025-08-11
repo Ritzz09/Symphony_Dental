@@ -11,6 +11,23 @@ export const Navigation = (props) => {
     }
   };
 
+
+   const blogs = [
+    {
+      id: "dental-myths-busted",
+      title: "Top 10 Dental Myths Busted",
+      url: "../pages/blog1"
+    },
+   ];
+
+   const handleBlogClick = (url) => {
+    // Close mobile menu if open
+    handleNavClick();
+    // Navigate to blog page
+    window.location.href = url;
+  };
+
+
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -71,6 +88,47 @@ export const Navigation = (props) => {
                 Contact
               </a>
             </li>
+
+             <li className="dropdown">
+              <a 
+                href="#" 
+                className="dropdown-toggle" 
+                data-toggle="dropdown" 
+                role="button" 
+                aria-haspopup="true" 
+                aria-expanded="false"
+              >
+                Blogs <span className="caret"></span>
+              </a>
+              <ul className="dropdown-menu">
+                {blogs.map((blog) => (
+                  <li key={blog.id}>
+                    <a 
+                      href="#" 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleBlogClick(blog.url);
+                      }}
+                    >
+                      {blog.title}
+                    </a>
+                  </li>
+                ))}
+                <li className="divider"></li>
+                <li>
+                  <a 
+                    href="#" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleBlogClick('/blogs');
+                    }}
+                  >
+                    View All Blogs
+                  </a>
+                </li>
+              </ul>
+            </li>
+
           </ul>
         </div>
       </div>
