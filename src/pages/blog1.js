@@ -27,7 +27,7 @@ const myths = [
     title: "Myth #1: If my teeth don’t hurt, they’re fine.",
     bust:
       "No pain doesn’t always mean no problems.",
-    desc :"This is one of the most dangerous myths. Many dental issues like cavities, gum disease, or infections don’t cause pain in the early stages. By the time you’re feeling discomfort, the problem may have already progressed. Around 60% of dental issues are symptom-free in early stages. (Source: American Dental Association) Regular dental check-ups help detect issues early, before they turn into painful and expensive procedures.",
+    desc: "This is one of the most dangerous myths. Many dental issues like cavities, gum disease, or infections don’t cause pain in the early stages. By the time you’re feeling discomfort, the problem may have already progressed. Around 60% of dental issues are symptom-free in early stages. (Source: American Dental Association) Regular dental check-ups help detect issues early, before they turn into painful and expensive procedures.",
     tip: "Rinse after snacks, limit sipping, and brush twice daily with fluoride toothpaste.",
   },
   {
@@ -818,23 +818,23 @@ export default function Blog({
             <div className="hero-text">
               <p className="hero-seq hero-badge">
                 What do you think you know vs What’s
-actually true!
+                actually true!
               </p>
               <h1 className="hero-seq hero-title">
                 Top 10 Dental Myths busted by a Dentist
               </h1>
               <p className="hero-seq hero-description">
-               We all grow up hearing a lot about dental care, from parents,
-friends, or even social media. But how much of it is actually
-true? As dental professionals, we come across a surprising
-number of myths and misconceptions every day. Some may
-seem harmless, but believing them can lead to poor oral health
-in the long run.
-According to the World Health Organization (WHO), nearly
-3.5 billion people worldwide suffer from oral diseases — and
-much of this is preventable with the right care and knowledge.
-Let’s bust some of the most common dental myths once and
-for all!
+                We all grow up hearing a lot about dental care, from parents,
+                friends, or even social media. But how much of it is actually
+                true? As dental professionals, we come across a surprising
+                number of myths and misconceptions every day. Some may
+                seem harmless, but believing them can lead to poor oral health
+                in the long run.
+                According to the World Health Organization (WHO), nearly
+                3.5 billion people worldwide suffer from oral diseases — and
+                much of this is preventable with the right care and knowledge.
+                Let’s bust some of the most common dental myths once and
+                for all!
               </p>
               <div className="hero-seq hero-actions">
                 <a href="#myths" className="hover-scale btn-primary">
@@ -869,9 +869,9 @@ for all!
                     <IconCheck width={20} height={20} />
                   </div>
                   <p className="myth-text">{m.bust}</p>
-           
+
                 </div>
-                 <p className="myth-text">{m.desc}</p>
+                <p className="myth-text">{m.desc}</p>
                 {m.tip && (
                   <p className="myth-tip">
                     Tip: {m.tip}
