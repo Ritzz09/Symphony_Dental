@@ -616,14 +616,15 @@ export default function Blog({
         }
         .myth-text1 {
           font-size: 24px;
-          color: #1f2937;
+          
+          font-weight:600;
         }
         @media (prefers-color-scheme: dark) {
           .myth-text {
             color: #e5e7eb;
           }
           .myth-text1 {
-            color: #e5e7eb;
+            
           }
         }
 
