@@ -14,7 +14,7 @@ import FAQ from "./components/faqs";
 import { About_Dentist } from "./components/about_dentist";
 import ScrollToTop from "./components/scroll";
 import ThankYou from "./components/thankyou"; 
-import Blog from "./pages/blog1";
+import Blog from "./blogs/blog1";
 
 import "./App.css";
 import SEO from "./components/SEO";
@@ -67,7 +67,7 @@ const App = () => {
         />
         <Route path="/thankyou" element={<ThankYou />} />
 
-        <Route  path="/pages/blog1" element={<Blog />} />
+        <Route  path="/blogs/top-10-dental-myths-busted-by-a-dentist" element={<Blog />} />
 
       </Routes>
     </Router>

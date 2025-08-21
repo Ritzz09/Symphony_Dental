@@ -16,7 +16,7 @@ export const Navigation = (props) => {
     {
       id: "dental-myths-busted",
       title: "Top 10 Dental Myths Busted",
-      url: "../pages/blog1"
+      url: "../blogs/top-10-dental-myths-busted-by-a-dentist"
     },
    ];
 
