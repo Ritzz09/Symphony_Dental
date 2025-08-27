@@ -18,7 +18,7 @@ import Blog from "./blogs/blog1";
 
 import "./App.css";
 import SEO from "./components/SEO";
-<link rel="stylesheet" href="%PUBLIC_URL%/css/style.css" />
+import { HelmetProvider } from "react-helmet-async";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
       <Footer Footer={JsonData.Footer} />
     </>
   ) : (
-    children // Render `ThankYou` without wrapping it in Navigation/Footer
+    children
   );
 };
 
@@ -46,31 +46,34 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <SEO />
-              <Header data={landingPageData.Header} />
-              <About_Clinic data={landingPageData.About} />
-              <Services data={landingPageData.Services} />
-              <About_Dentist data={landingPageData.About} />
-              <Gallery data={landingPageData.Gallery} />
-              <Testimonials data={landingPageData.Testimonials} />
-              <FAQ data={landingPageData.FAQ} />
-              <Contact data={landingPageData.Contact} />
-            </Layout>
-          }
-        />
-        <Route path="/thankyou" element={<ThankYou />} />
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Layout>
+                {/* Landing Page SEO */}
+                <SEO />
+                <Header data={landingPageData.Header} />
+                <About_Clinic data={landingPageData.About} />
+                <Services data={landingPageData.Services} />
+                <About_Dentist data={landingPageData.About} />
+                <Gallery data={landingPageData.Gallery} />
+                <Testimonials data={landingPageData.Testimonials} />
+                <FAQ data={landingPageData.FAQ} />
+                <Contact data={landingPageData.Contact} />
+              </Layout>
+            }
+          />
+          <Route path="/thankyou" element={<ThankYou />} />
 
-        <Route  path="/blogs/top-10-dental-myths-busted-by-a-dentist" element={<Blog />} />
-
-      </Routes>
-    </Router>
+          {/* Blog page with its own SEO handled in blog1.jsx */}
+          <Route path="/blogs/top-10-dental-myths-busted-by-a-dentist" element={<Blog />} />
+        </Routes>
+      </Router>
+    </HelmetProvider>
   );
 };
 
