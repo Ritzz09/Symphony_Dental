@@ -18,6 +18,11 @@ export const Navigation = (props) => {
       title: "Top 10 Dental Myths Busted",
       url: "../blogs/top-10-dental-myths-busted-by-a-dentist"
     },
+     {
+      id: "are-bleeding-gums-normal",
+      title: "Are Bleeding Gums Normal?",
+      url: "../blogs/are-bleeding-gums-normal"
+    },
    ];
 
    const handleBlogClick = (url) => {
@@ -115,7 +120,7 @@ export const Navigation = (props) => {
                   </li>
                 ))}
                 <li className="divider"></li>
-                <li>
+                {/* <li>
                   <a 
                     href="#" 
                     onClick={(e) => {
@@ -125,7 +130,7 @@ export const Navigation = (props) => {
                   >
                     View All Blogs
                   </a>
-                </li>
+                </li> */}
               </ul>
             </li>
 

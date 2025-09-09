@@ -2,6 +2,8 @@
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import img from "../components/Gallery/thankyou.webp";
+import dentist from "../components/Gallery/dentist1.jpg";
+
 
   // Inline SVG icons (no external deps)
   const IconX = (props) => (
@@ -93,6 +95,85 @@
       tip: "Invest in preventive care and discuss flexible payment plans with your dental office. Prevention truly is cheaper than cure!",
     },
   ];
+
+  const SocialShare = () => {
+      useEffect(() => {
+          // This effect runs only on the client-side
+          const postUrl = encodeURIComponent(window.location.href);
+          const postTitle = encodeURIComponent(document.title);
+  
+          const shareLinks = {
+              fb: `https://www.facebook.com/sharer/sharer.php?u=${postUrl}`,
+              tw: `https://twitter.com/intent/tweet?url=${postUrl}&text=${postTitle}`,
+              li: `https://www.linkedin.com/shareArticle?mini=true&url=${postUrl}`,
+              wa: `https://api.whatsapp.com/send?text=${postTitle}%20${postUrl}`,
+              em: `mailto:?subject=${postTitle}&body=Check%20out%20this%20article:%20${postUrl}`
+          };
+          
+          const setLink = (id, url) => {
+              const el = document.getElementById(id);
+              if (el) el.href = url;
+          };
+  
+          setLink('share-fb', shareLinks.fb);
+          setLink('share-tw', shareLinks.tw);
+          setLink('share-li', shareLinks.li);
+          setLink('share-wa', shareLinks.wa);
+          setLink('share-em', shareLinks.em);
+  
+          const openPopup = (e) => {
+              e.preventDefault();
+              window.open(e.currentTarget.href, 'share-window', 'height=450,width=550,toolbar=0,menubar=0,location=0,scrollbars=1,resizable=1');
+          };
+  
+          const popupButtons = document.querySelectorAll('.popup-share');
+          popupButtons.forEach(button => button.addEventListener('click', openPopup));
+  
+          return () => {
+              popupButtons.forEach(button => button.removeEventListener('click', openPopup));
+          };
+      }, []);
+  
+        return (
+          <section className="content-card" >
+              <h3 className="cta-title" style={{ marginBottom: '15px' }}>Share this Article</h3>
+              <div className="social-share-container">
+                  <a href="#" id="share-fb" className="social-share-button share-facebook popup-share"><i className="fab fa-facebook-f"></i> Share</a>
+                  <a href="#" id="share-tw" className="social-share-button share-twitter popup-share"><i className="fab fa-twitter"></i> Tweet</a>
+                  <a href="#" id="share-li" className="social-share-button share-linkedin popup-share"><i className="fab fa-linkedin-in"></i> Share</a>
+                  <a href="#" id="share-wa" className="social-share-button share-whatsapp" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp"></i> Share</a>
+                  <a href="#" id="share-em" className="social-share-button share-email"><i className="fas fa-envelope"></i> Email</a>
+              </div>
+          </section>
+      );
+  };
+  
+  const AuthorBox = ({ authorImage, authorName, authorTitle, socialLinks, bio, specialties, appointmentLink }) => {
+      return (
+          <div className="new-author-card" aria-labelledby="author-title">
+              <div className="author-image-wrapper">
+                  <img src={authorImage} alt={authorName} className="author-image-circle" />
+              </div>
+              <div className="author-details-wrapper">
+                  <span className="author-written-by">Written By</span>
+                  <h3 id="author-title" className="new-author-name">{authorName}</h3>
+                  <div className="author-social-links">
+                      {socialLinks.twitter && <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" title="Twitter"><i className="fab fa-twitter"></i></a>}
+                      {socialLinks.facebook && <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" title="Facebook"><i className="fab fa-facebook-f"></i></a>}
+                      {socialLinks.youtube && <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" title="YouTube"><i className="fab fa-youtube"></i></a>}
+                      {socialLinks.instagram && <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" title="Instagram"><i className="fab fa-instagram"></i></a>}
+                  </div>
+                  <p className="author-text">
+                      <strong>{authorTitle}</strong>. {bio}
+                  </p>
+                  <p className="author-specialties">
+                      <strong>Specialties:</strong> {specialties}
+                  </p>
+                  <a href={appointmentLink} className="book-appointment-btn">BOOK AN APPOINTMENT</a>
+              </div>
+          </div>
+      );
+  };
 
   function upsertMeta(attr, key, content) {
     let el = document.querySelector(`meta[${attr}="${key}"]`);
@@ -920,6 +1001,43 @@
     }
   }
 
+    .social-share-container { display: flex; flex-wrap: wrap; gap: 10px; font-family: sans-serif; }
+        .social-share-button { display: inline-flex; align-items: center; padding: 8px 15px; border-radius: 4px; color: white; text-decoration: none; font-size: 14px; transition: opacity 0.3s; }
+        .social-share-button:hover { opacity: 0.85; }
+        .social-share-button i { margin-right: 8px; }
+        .share-facebook { background-color: #3b5998; }
+        .share-twitter { background-color: #000000; }
+        .share-linkedin { background-color: #0077b5; }
+        .share-whatsapp { background-color: #25d366; }
+        .share-email { background-color: #777777; }
+        
+        /* --- NEW Author Box Styles --- */
+        .new-author-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; border: 1px solid #e5e7eb; background-color: white; padding: 24px; border-radius: 8px; margin-top: 40px; }
+        @media (min-width: 768px) { .new-author-card { flex-direction: row; text-align: left; } }
+        .author-image-wrapper { flex-shrink: 0; }
+        .author-image-circle { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
+        .author-details-wrapper { flex-grow: 1; }
+        .author-written-by { font-size: 12px; color: #888; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid #ccc; display: inline-block; padding-bottom: 2px; margin-bottom: 5px; }
+        .new-author-name { font-size: 24px; font-weight: 600; margin: 0; color: #111827; }
+        .author-social-links { margin-top: 8px; margin-bottom: 15px; display: flex; gap: 15px; justify-content: center; }
+        @media (min-width: 768px) { .author-social-links { justify-content: flex-start; } }
+        .author-social-links a { color: #d9534f; font-size: 20px; text-decoration: none; transition: color 0.3s; }
+        .author-social-links a:hover { color: #333; }
+        .author-text, .author-specialties { font-size: 14px; color: #6b7280; }
+        .book-appointment-btn { display: inline-block; background-color: #2563EB; color: white !important; padding: 12px 25px; font-size: 16px; font-weight: 500; text-decoration: none; border-radius: 5px; margin-top: 20px; transition: background-color 0.3s; }
+        .book-appointment-btn:hover { background-color: #111827; }
+
+        /* Dark Mode Adjustments */
+        @media (prefers-color-scheme: dark) {
+            body { color: #f3f4f6; background-color: #0f0f0f; }
+            .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,1) 100%); }
+            .A, .sidebar-card, .new-author-card { border-color: rgba(255, 255, 255, 0.1); background-color: #171717; }
+            .new-author-name { color: #f3f4f6; }
+            .author-social-links a:hover { color: #f3f4f6; }
+            .author-text, .author-specialties, .cta-text { color: #9ca3af; }
+        }
+        }
+
         `}</style>
 
         <div ref={rootRef}>
@@ -1030,6 +1148,8 @@
               
                 </ul>
               </section>
+            <SocialShare />
+
             </article>
 
             <aside className="sidebar">
@@ -1065,23 +1185,23 @@
               </div>
             </aside>
           </main>
-          <div className="author-card" aria-labelledby="author-title">
-    <h3 id="author-title" className="author-title">Author</h3>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px 40px' }}>
+          <AuthorBox
+            authorImage={dentist} // <-- CUSTOMIZE: Add author's image URL
+            authorName="Dr. Sailee Kalyankar"
+            authorTitle="MDS — Founder, Symphony Dental Care (Khar/Bandra)"
+              socialLinks={{
+                twitter: "https://x.com/Symphony2025",      // <-- CUSTOMIZE: Add Twitter profile URL
+                facebook: "https://www.facebook.com/SymphonyDentalCareKharWest/",     // <-- CUSTOMIZE: Add Facebook profile URL
+                youtube: "https://www.youtube.com/@SymphonyDentalCare",     // <-- CUSTOMIZE: Add youtube profile URL
+                instagram: "https://www.instagram.com/symphonydentalcare",    // <-- CUSTOMIZE: Add Instagram profile URL
+            }}
+            bio="Dr. Sailee is a Root Canal Specialist and an expert in Conservative Dentistry with over 8 years of experience. Known for her microscopic RCT expertise, gentle techniques, and focus on pain-free dental care, she leads a skilled team that offers everything from routine checkups to full mouth rehabilitation."
+            specialties="Periodontal Care, Painless Root Canals, Dental Implants, Cosmetic Dentistry."
+            appointmentLink="/#contact" // <-- CUSTOMIZE: Link for appointment button
+          />
+        </div>
 
-    <p className="author-name">
-      Dr. Sailee Kalyankar, MDS — Founder, Symphony Dental Care (Khar/Bandra)
-    </p>
-
-    <p className="author-text">
-      Dr. Sailee is a Root Canal Specialist and an expert in Conservative Dentistry with over 8 years of experience.
-      Known for her microscopic RCT expertise, gentle techniques, and focus on pain-free dental care, she leads a skilled
-      team that offers everything from routine checkups to full mouth rehabilitation.
-    </p>
-
-    <p className="author-specialties">
-      Specialties: Painless Root Canals, Dental Implants, Braces, Cosmetic Dentistry, Pediatric Dental Care.
-    </p>
-  </div>
 
         </div>
       </>

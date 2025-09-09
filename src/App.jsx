@@ -15,6 +15,8 @@ import { About_Dentist } from "./components/about_dentist";
 import ScrollToTop from "./components/scroll";
 import ThankYou from "./components/thankyou"; 
 import Blog from "./blogs/blog1";
+import Blog2 from "./blogs/blog2";
+
 import { Helmet } from "react-helmet-async";
 import "./App.css";
 
@@ -146,6 +148,7 @@ const App = () => {
 
           {/* Blog page with its own SEO handled in blog1.jsx */}
           <Route path="/blogs/top-10-dental-myths-busted-by-a-dentist" element={<Blog />} />
+           <Route path="/blogs/are-bleeding-gums-normal" element={<Blog2 />} />
         </Routes>
       </Router>
     </HelmetProvider>
