@@ -457,9 +457,62 @@ export default function Blog2({
         .sidebar-nav a { color: #4b5563; }
         .cta-text, .author-text { margin-top: 8px; font-size: 14px; color: #6b7280; }
         .cta-button { margin-top: 12px; }
-        .author-card { margin: 30px; }
-        .author-name { margin-top: 8px; font-size: 16px; font-weight: 600; }
-        .author-specialties { margin-top: 12px; font-size: 14px; }
+          .author-card {
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background-color: white;
+    padding: 24px;
+    margin: 30px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .author-card {
+      border-color: rgba(255, 255, 255, 0.1);
+      background-color: #171717;
+    }
+  }
+
+  .author-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .author-name {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .author-name {
+      color: #e5e7eb;
+    }
+  }
+
+  .author-text {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #4b5563;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .author-text {
+      color: #d1d5db;
+    }
+  }
+
+  .author-specialties {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #374151;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .author-specialties {
+      color: #e5e7eb;
+    }
+  }
         .ml-2 { margin-left: 8px; }
         @media (prefers-color-scheme: dark) {
             .section-intro, .point-text { color: #9ca3af; }
@@ -605,18 +658,7 @@ export default function Blog2({
           />
         </div>
 
-        {/* <div className="author-card" aria-labelledby="author-title">
-            <h3 id="author-title" className="author-title">Author</h3>
-            <p className="author-name">
-              Dr. Sailee Kalyankar, MDS — Founder, Symphony Dental Care (Khar/Bandra)
-            </p>
-            <p className="author-text">
-              Dr. Sailee is a Root Canal Specialist and an expert in Conservative Dentistry with over 8 years of experience. Known for her microscopic RCT expertise, gentle techniques, and focus on pain-free dental care, she leads a skilled team that offers everything from routine checkups to full mouth rehabilitation.
-            </p>
-            <p className="author-specialties">
-              Specialties: Periodontal Care, Painless Root Canals, Dental Implants, Cosmetic Dentistry.
-            </p>
-        </div> */}
+      
       </div>
     </>
   );
