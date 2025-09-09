@@ -319,14 +319,18 @@ export default function Blog2({
 
     // FAQ JSON-LD based on sections
     const faqLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: bleedingGumsContent.map((s) => ({
-        "@type": "Question",
-        name: s.title,
-        acceptedAnswer: { "@type": "Answer", text: s.bust },
-      })),
-    };
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: bleedingGumsContent.map((s) => ({
+    "@type": "Question",
+    name: s.title,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: `${s.intro} ${s.points.map(p => p.text).join(" ")}`, // merge into one answer
+    },
+  })),
+};
+
 
     upsertJsonLd("ld-blogposting", blogPostingLd);
     upsertJsonLd("ld-faq", faqLd);
@@ -414,6 +418,7 @@ export default function Blog2({
   return (
     <>
       <style>{`
+   
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif; line-height: 1.6; color: #374151; background-color: #ffffff; }
         @media (prefers-color-scheme: dark) { body { color: #f3f4f6; background-color: #0f0f0f; } }
@@ -446,7 +451,6 @@ export default function Blog2({
         .section-title { font-size: 30px; font-weight: 600; }
         .section-intro { margin-top: 8px; color: #fff; }
         .points-container { margin-top: 16px; display: flex; flex-direction: column; gap: 16px; }
-        .point-item { }
         .point-heading { font-weight: 600; font-size: 24px; color: #374151; list-style-type: disc; list-style-position: inside; }
         .point-text { margin-top: 4px; color: #4b5563; padding-left: 16px; }
         .sidebar { display: flex; flex-direction: column; gap: 24px; }
@@ -457,69 +461,69 @@ export default function Blog2({
         .sidebar-nav a { color: #4b5563; }
         .cta-text, .author-text { margin-top: 8px; font-size: 14px; color: #6b7280; }
         .cta-button { margin-top: 12px; }
-          .author-card {
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    background-color: white;
-    padding: 24px;
-    margin: 30px;
-  }
 
-  @media (prefers-color-scheme: dark) {
-    .author-card {
-      border-color: rgba(255, 255, 255, 0.1);
-      background-color: #171717;
-    }
-  }
+        /* --- Responsive Author Box --- */
+        .new-author-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            border: 1px solid #e5e7eb;
+            background-color: white;
+            padding: 24px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        @media (min-width: 768px) {
+            .new-author-card {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+            }
+        }
+        @media (min-width: 1024px) {
+            .new-author-card {
+                padding: 32px;
+                gap: 30px;
+            }
+        }
+        .author-image-wrapper { flex-shrink: 0; }
+        .author-image-circle { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
+        @media (min-width: 1024px) {
+            .author-image-circle { width: 140px; height: 140px; }
+        }
+        .author-details-wrapper { flex-grow: 1; }
+        .author-written-by { font-size: 12px; color: #888; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid #ccc; display: inline-block; padding-bottom: 2px; margin-bottom: 5px; }
+        .new-author-name { font-size: 24px; font-weight: 600; margin: 0; color: #111827; }
+        @media (min-width: 1024px) { .new-author-name { font-size: 28px; } }
+        .author-social-links { margin-top: 8px; margin-bottom: 15px; display: flex; gap: 15px; justify-content: center; }
+        @media (min-width: 768px) { .author-social-links { justify-content: flex-start; } }
+        .author-social-links a { color: #d9534f; font-size: 20px; text-decoration: none; transition: color 0.3s; }
+        .author-social-links a:hover { color: #333; }
+        .author-text, .author-specialties { font-size: 14px; color: #6b7280; line-height: 1.5; }
+        @media (min-width: 1024px) {
+            .author-text, .author-specialties { font-size: 15px; }
+        }
+        .book-appointment-btn { display: inline-block; background-color: #2563EB; color: white !important; padding: 12px 25px; font-size: 16px; font-weight: 500; text-decoration: none; border-radius: 5px; margin-top: 20px; transition: background-color 0.3s; }
+        .book-appointment-btn:hover { background-color: #111827; }
 
-  .author-title {
-    font-size: 20px;
-    font-weight: 600;
-  }
+        /* Dark Mode Adjustments */
+        @media (prefers-color-scheme: dark) {
+            .content-card, .sidebar-card, .new-author-card { border-color: rgba(255, 255, 255, 0.1); background-color: #171717; }
+            .new-author-name { color: #f3f4f6; }
+            .author-social-links a:hover { color: #f3f4f6; }
+            .author-text, .author-specialties, .cta-text { color: #9ca3af; }
+        }
 
-  .author-name {
-    margin-top: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #111827;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .author-name {
-      color: #e5e7eb;
-    }
-  }
-
-  .author-text {
-    margin-top: 8px;
-    font-size: 14px;
-    color: #4b5563;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .author-text {
-      color: #d1d5db;
-    }
-  }
-
-  .author-specialties {
-    margin-top: 12px;
-    font-size: 14px;
-    color: #374151;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .author-specialties {
-      color: #e5e7eb;
-    }
-  }
         .ml-2 { margin-left: 8px; }
         @media (prefers-color-scheme: dark) {
             .section-intro, .point-text { color: #9ca3af; }
             .point-heading { color: #d1d5db; }
             .sidebar-nav a { color: #d1d5db; }
             .cta-text, .author-text { color: #9ca3af; }
-         .social-share-container { display: flex; flex-wrap: wrap; gap: 10px; font-family: sans-serif; }
+        }
+        .social-share-container { display: flex; flex-wrap: wrap; gap: 10px; font-family: sans-serif; }
         .social-share-button { display: inline-flex; align-items: center; padding: 8px 15px; border-radius: 4px; color: white; text-decoration: none; font-size: 14px; transition: opacity 0.3s; }
         .social-share-button:hover { opacity: 0.85; }
         .social-share-button i { margin-right: 8px; }
@@ -528,33 +532,8 @@ export default function Blog2({
         .share-linkedin { background-color: #0077b5; }
         .share-whatsapp { background-color: #25d366; }
         .share-email { background-color: #777777; }
-        
-        /* --- NEW Author Box Styles --- */
-        .new-author-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; border: 1px solid #e5e7eb; background-color: white; padding: 24px; border-radius: 8px; margin-top: 40px; }
-        @media (min-width: 768px) { .new-author-card { flex-direction: row; text-align: left; } }
-        .author-image-wrapper { flex-shrink: 0; }
-        .author-image-circle { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
-        .author-details-wrapper { flex-grow: 1; }
-        .author-written-by { font-size: 12px; color: #888; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid #ccc; display: inline-block; padding-bottom: 2px; margin-bottom: 5px; }
-        .new-author-name { font-size: 24px; font-weight: 600; margin: 0; color: #111827; }
-        .author-social-links { margin-top: 8px; margin-bottom: 15px; display: flex; gap: 15px; justify-content: center; }
-        @media (min-width: 768px) { .author-social-links { justify-content: flex-start; } }
-        .author-social-links a { color: #d9534f; font-size: 20px; text-decoration: none; transition: color 0.3s; }
-        .author-social-links a:hover { color: #333; }
-        .author-text, .author-specialties { font-size: 14px; color: #6b7280; }
-        .book-appointment-btn { display: inline-block; background-color: #2563EB; color: white !important; padding: 12px 25px; font-size: 16px; font-weight: 500; text-decoration: none; border-radius: 5px; margin-top: 20px; transition: background-color 0.3s; }
-        .book-appointment-btn:hover { background-color: #111827; }
 
-        /* Dark Mode Adjustments */
-        @media (prefers-color-scheme: dark) {
-            body { color: #f3f4f6; background-color: #0f0f0f; }
-            .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,1) 100%); }
-            .content-card, .sidebar-card, .new-author-card { border-color: rgba(255, 255, 255, 0.1); background-color: #171717; }
-            .new-author-name { color: #f3f4f6; }
-            .author-social-links a:hover { color: #f3f4f6; }
-            .author-text, .author-specialties, .cta-text { color: #9ca3af; }
-        }
-        }
+
       `}</style>
 
 
