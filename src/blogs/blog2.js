@@ -449,7 +449,8 @@ export default function Blog2({
         .content-card, .sidebar-card, .author-card { border-radius: 8px; border: 1px solid #e5e7eb; background-color: white; padding: 24px; }
         @media (prefers-color-scheme: dark) { .content-card, .sidebar-card, .author-card { border-color: rgba(255, 255, 255, 0.1); background-color: #171717; } }
         .section-title { font-size: 30px; font-weight: 600; }
-        .section-intro { margin-top: 8px; color: #fff; }
+        .section-intro { margin-top: 8px;  }
+         @media (prefers-color-scheme: dark) { .section-intro { color: #9ca3af; } }
         .points-container { margin-top: 16px; display: flex; flex-direction: column; gap: 16px; }
         .point-heading { font-weight: 600; font-size: 24px; color: #374151; list-style-type: disc; list-style-position: inside; }
         .point-text { margin-top: 4px; color: #4b5563; padding-left: 16px; }
