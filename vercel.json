@@ -4,33 +4,9 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "build/**",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/build/static/$1"
-    },
-    {
-      "src": "/css/(.*)",
-      "dest": "/build/css/$1"
-    },
-    {
-      "src": "/js/(.*)",
-      "dest": "/build/js/$1"
-    },
-    {
-      "src": "/img/(.*)",
-      "dest": "/build/img/$1"
-    },
-    {
-      "src": "/fonts/(.*)",
-      "dest": "/build/fonts/$1"
-    },
     {
       "src": "/(.*)",
       "dest": "/server.js"
