@@ -67,14 +67,14 @@ const App = () => {
                   <meta property="og:description" content="Looking for a dentist in Khar/Bandra? Symphony Dental Care offers expert dental services with a focus on patient comfort, care, and the latest treatments for all your oral health needs." />
                   <meta property="og:url" content="https://symphonydentalcare.in/" />
                   <meta property="og:type" content="website" />
-                  <meta property="og:image" content="https://symphonydentalcare.in/img/clinic.webp" />
+                  <meta property="og:image" content="https://www.symphonydentalcare.in/static/media/clinic1.0a13d280cb75976696ae.webp" />
                   <meta property="og:site_name" content="Symphony Dental Care" />
                   
                   {/* Twitter Card Meta Tags */}
                   <meta name="twitter:card" content="summary_large_image" />
                   <meta name="twitter:title" content="Dentist in Khar West | Dental Clinic in Khar/Bandra" />
                   <meta name="twitter:description" content="Looking for a dentist in Khar/Bandra? Symphony Dental Care offers expert dental services..." />
-                  <meta name="twitter:image" content="https://symphonydentalcare.in/img/clinic.webp" />
+                  <meta name="twitter:image" content="https://www.symphonydentalcare.in/static/media/clinic1.0a13d280cb75976696ae.webp" />
                   <meta name="twitter:site" content="@Symphony2025" />
                   
                   {/* Additional SEO Meta Tags */}
@@ -90,7 +90,7 @@ const App = () => {
                       "@context": "https://schema.org",
                       "@type": "LocalBusiness",
                       "name": "Symphony Dental Care",
-                      "image": "https://symphonydentalcare.in/img/clinic.webp",
+                      "image": "https://www.symphonydentalcare.in/static/media/clinic1.0a13d280cb75976696ae.webp",
                       "url": "https://symphonydentalcare.in/",
                       "telephone": "76780 45993",
                       "address": {
@@ -148,7 +148,7 @@ const App = () => {
                   <meta property="og:title" content="Thank You | Symphony Dental Care" />
                   <meta property="og:description" content="Thank you for contacting Symphony Dental Care. We will get back to you soon." />
                   <meta property="og:url" content="https://symphonydentalcare.in/thankyou" />
-                  <meta property="og:image" content="https://symphonydentalcare.in/img/clinic.webp" />
+                  <meta property="og:image" content="https://www.symphonydentalcare.in/static/media/clinic1.0a13d280cb75976696ae.webp" />
                   
                   <meta name="robots" content="noindex, follow" />
                   
@@ -188,14 +188,14 @@ const App = () => {
                   <meta property="og:description" content="Discover the truth behind common dental myths. Learn facts about oral health from our experienced dentist." />
                   <meta property="og:url" content="https://symphonydentalcare.in/blogs/top-10-dental-myths-busted-by-a-dentist" />
                   <meta property="og:type" content="article" />
-                  <meta property="og:image" content="https://symphonydentalcare.in/img/blog-dental-myths.webp" />
+                  <meta property="og:image" content="https://www.symphonydentalcare.in/static/media/thankyou.0d462809be764adabcd4.webp" />
                   <meta property="article:author" content="Dr. Sailee Kalyankar" />
                   <meta property="article:published_time" content="2024-09-01" />
                   
                   <meta name="twitter:card" content="summary_large_image" />
                   <meta name="twitter:title" content="Top 10 Dental Myths Busted by a Dentist" />
                   <meta name="twitter:description" content="Discover the truth behind common dental myths from our expert dentist." />
-                  <meta name="twitter:image" content="https://symphonydentalcare.in/img/blog-dental-myths.webp" />
+                  <meta name="twitter:image" content="https://www.symphonydentalcare.in/static/media/thankyou.0d462809be764adabcd4.webp" />
                   
                   <script type="application/ld+json">
                     {JSON.stringify({
@@ -203,7 +203,7 @@ const App = () => {
                       "@type": "BlogPosting",
                       "headline": "Top 10 Dental Myths Busted by a Dentist",
                       "description": "Discover the truth behind common dental myths. Learn facts about oral health from our experienced dentist.",
-                      "image": "https://symphonydentalcare.in/img/blog-dental-myths.webp",
+                      "image": "https://www.symphonydentalcare.in/static/media/thankyou.0d462809be764adabcd4.webp",
                       "author": {
                         "@type": "Person",
                         "name": "Dr. Sailee Kalyankar"
