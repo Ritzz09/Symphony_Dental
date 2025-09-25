@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import img from "../components/Gallery/thankyou.webp";
 import dentist from "../components/Gallery/dentist1.jpg";
-
 
 // Inline SVG icons (no external deps)
 const IconX = (props) => (
@@ -175,37 +174,6 @@ const AuthorBox = ({ authorImage, authorName, authorTitle, socialLinks, bio, spe
   );
 };
 
-function upsertMeta(attr, key, content) {
-  let el = document.querySelector(`meta[${attr}="${key}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute(attr, key);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-}
-
-function upsertLink(rel, href) {
-  let el = document.querySelector(`link[rel="${rel}"]`);
-  if (!el) {
-    el = document.createElement("link");
-    el.setAttribute("rel", rel);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("href", href);
-}
-
-function upsertJsonLd(id, json) {
-  let el = document.getElementById(id);
-  if (!el) {
-    el = document.createElement("script");
-    el.type = "application/ld+json";
-    el.id = id;
-    document.head.appendChild(el);
-  }
-  el.textContent = JSON.stringify(json);
-}
-
 export default function Blog({
   heroSrc = img,
   publisherName = "Dental Insights",
@@ -219,13 +187,6 @@ export default function Blog({
   const progressRef = useRef(null);
   const cardsRef = useRef([]);
 
-  const canonical = useMemo(() => {
-    if (typeof window !== "undefined") {
-      return `${window.location.origin}${basePath}`;
-    }
-    return `https://example.com${basePath}`;
-  }, [basePath]);
-
   // Spotlight mouse position
   const onMouseMove = (e) => {
     const el = heroRef.current;
@@ -234,130 +195,6 @@ export default function Blog({
     el.style.setProperty("--x", `${e.clientX - rect.left}px`);
     el.style.setProperty("--y", `${e.clientY - rect.top}px`);
   };
-
-  // SEO + JSON-LD
-  useEffect(() => {
-    // Explicit values as requested
-    const CANONICAL =
-      "https://www.symphonydentalcare.in/blogs/top-10-dental-myths-busted-by-a-dentist";
-    const TITLE = "Top 10 Dental Myths busted by a Dentist";
-    const DESCRIPTION =
-      "Top 10 Dental Myths Busted by a Dentist – Dr. Sailee Kalyankar reveals secrets that could save your teeth (you’ll never brush the same way again!).";
-    const OG_IMAGE =
-      "https://www.symphonydentalcare.in/static/media/thankyou.0d462809be764adabcd4.webp";
-
-    // Keep prior title to restore on unmount
-    const prevTitle = document.title;
-    document.title = TITLE;
-
-    // Canonical
-    upsertLink("canonical", CANONICAL);
-
-    // Standard description
-    upsertMeta("name", "description", DESCRIPTION);
-
-    // Open Graph
-    upsertMeta("property", "og:title", TITLE);
-    upsertMeta("property", "og:description", DESCRIPTION);
-    upsertMeta("property", "og:type", "article");
-    upsertMeta("property", "og:url", CANONICAL);
-    upsertMeta("property", "og:image", OG_IMAGE);
-    upsertMeta("property", "og:site_name", "Symphony Dental Care");
-    upsertMeta("property", "og:locale", "en_US");
-
-    // Twitter
-    upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", TITLE);
-    upsertMeta("name", "twitter:description", DESCRIPTION);
-    upsertMeta("name", "twitter:image", OG_IMAGE);
-    upsertMeta("name", "twitter:site", "@Symphony2025");
-    upsertMeta("name", "twitter:url", CANONICAL);
-
-    // BlogPosting JSON-LD
-    const blogPostingLd = {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": CANONICAL,
-      },
-      headline: TITLE,
-      description: DESCRIPTION,
-      image: OG_IMAGE,
-      author: {
-        "@type": "Person",
-        name: "Dr. Sailee Kalyankar",
-        url: "https://www.symphonydentalcare.in/#about_dentist",
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "Symphony dental care",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://www.symphonydentalcare.in/static/media/logo.985b454d2bce33c9fce9.png",
-        },
-      },
-      datePublished: "2025-08-18",
-    };
-
-    // Optional: FAQ JSON-LD based on myths array
-    const faqLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: myths.map((m) => ({
-        "@type": "Question",
-        name: m.title.replace(/Myth #\d+:\s*/, ""),
-        acceptedAnswer: { "@type": "Answer", text: m.bust },
-      })),
-    };
-
-    // Insert/Update JSON-LD scripts
-    upsertJsonLd("ld-blogposting", blogPostingLd);
-    upsertJsonLd("ld-faq", faqLd);
-
-    // Cleanup to prevent SPA tag leakage
-    return () => {
-      document.title = prevTitle;
-
-      const linkEl = document.querySelector('link[rel="canonical"]');
-      if (linkEl && linkEl.getAttribute("href") === CANONICAL) {
-        linkEl.parentNode?.removeChild(linkEl);
-      }
-
-      const removeMetaIfMatch = (attr, key, value) => {
-        const el = document.querySelector(`meta[${attr}="${key}"]`);
-        if (el && el.getAttribute("content") === value) {
-          el.parentNode?.removeChild(el);
-        }
-      };
-
-      // Standard
-      removeMetaIfMatch("name", "description", DESCRIPTION);
-
-      // OG
-      removeMetaIfMatch("property", "og:title", TITLE);
-      removeMetaIfMatch("property", "og:description", DESCRIPTION);
-      removeMetaIfMatch("property", "og:type", "article");
-      removeMetaIfMatch("property", "og:url", CANONICAL);
-      removeMetaIfMatch("property", "og:image", OG_IMAGE);
-      removeMetaIfMatch("property", "og:site_name", "Symphony Dental Care");
-      removeMetaIfMatch("property", "og:locale", "en_US");
-
-      // Twitter
-      removeMetaIfMatch("name", "twitter:card", "summary_large_image");
-      removeMetaIfMatch("name", "twitter:title", TITLE);
-      removeMetaIfMatch("name", "twitter:description", DESCRIPTION);
-      removeMetaIfMatch("name", "twitter:image", OG_IMAGE);
-      removeMetaIfMatch("name", "twitter:site", "@Symphony2025");
-      removeMetaIfMatch("name", "twitter:url", CANONICAL);
-
-      // JSON-LD
-      const blogLdEl = document.getElementById("ld-blogposting");
-      if (blogLdEl) blogLdEl.parentNode?.removeChild(blogLdEl);
-      const faqLdEl = document.getElementById("ld-faq");
-      if (faqLdEl) faqLdEl.parentNode?.removeChild(faqLdEl);
-    };
-  }, []); // run once on mount for this page
 
   // GSAP animations
   useEffect(() => {

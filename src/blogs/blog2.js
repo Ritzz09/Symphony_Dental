@@ -1,20 +1,15 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import img from "../components/Gallery/thankyou.webp";
 import dentist from "../components/Gallery/dentist1.jpg";
 
-
-
-
 // Inline SVG icons
-
 const IconArrowRight = (props) => (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" {...props}>
     <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
-
 
 // New Data for the "Bleeding Gums" blog post
 const bleedingGumsContent = [
@@ -136,118 +131,83 @@ const bleedingGumsContent = [
 ];
 
 const SocialShare = () => {
-    useEffect(() => {
-        // This effect runs only on the client-side
-        const postUrl = encodeURIComponent(window.location.href);
-        const postTitle = encodeURIComponent(document.title);
+  useEffect(() => {
+    // This effect runs only on the client-side
+    const postUrl = encodeURIComponent(window.location.href);
+    const postTitle = encodeURIComponent(document.title);
 
-        const shareLinks = {
-            fb: `https://www.facebook.com/sharer/sharer.php?u=${postUrl}`,
-            tw: `https://twitter.com/intent/tweet?url=${postUrl}&text=${postTitle}`,
-            li: `https://www.linkedin.com/shareArticle?mini=true&url=${postUrl}`,
-            wa: `https://api.whatsapp.com/send?text=${postTitle}%20${postUrl}`,
-            em: `mailto:?subject=${postTitle}&body=Check%20out%20this%20article:%20${postUrl}`
-        };
-        
-        const setLink = (id, url) => {
-            const el = document.getElementById(id);
-            if (el) el.href = url;
-        };
+    const shareLinks = {
+      fb: `https://www.facebook.com/sharer/sharer.php?u=${postUrl}`,
+      tw: `https://twitter.com/intent/tweet?url=${postUrl}&text=${postTitle}`,
+      li: `https://www.linkedin.com/shareArticle?mini=true&url=${postUrl}`,
+      wa: `https://api.whatsapp.com/send?text=${postTitle}%20${postUrl}`,
+      em: `mailto:?subject=${postTitle}&body=Check%20out%20this%20article:%20${postUrl}`
+    };
+    
+    const setLink = (id, url) => {
+      const el = document.getElementById(id);
+      if (el) el.href = url;
+    };
 
-        setLink('share-fb', shareLinks.fb);
-        setLink('share-tw', shareLinks.tw);
-        setLink('share-li', shareLinks.li);
-        setLink('share-wa', shareLinks.wa);
-        setLink('share-em', shareLinks.em);
+    setLink('share-fb', shareLinks.fb);
+    setLink('share-tw', shareLinks.tw);
+    setLink('share-li', shareLinks.li);
+    setLink('share-wa', shareLinks.wa);
+    setLink('share-em', shareLinks.em);
 
-        const openPopup = (e) => {
-            e.preventDefault();
-            window.open(e.currentTarget.href, 'share-window', 'height=450,width=550,toolbar=0,menubar=0,location=0,scrollbars=1,resizable=1');
-        };
+    const openPopup = (e) => {
+      e.preventDefault();
+      window.open(e.currentTarget.href, 'share-window', 'height=450,width=550,toolbar=0,menubar=0,location=0,scrollbars=1,resizable=1');
+    };
 
-        const popupButtons = document.querySelectorAll('.popup-share');
-        popupButtons.forEach(button => button.addEventListener('click', openPopup));
+    const popupButtons = document.querySelectorAll('.popup-share');
+    popupButtons.forEach(button => button.addEventListener('click', openPopup));
 
-        return () => {
-            popupButtons.forEach(button => button.removeEventListener('click', openPopup));
-        };
-    }, []);
+    return () => {
+      popupButtons.forEach(button => button.removeEventListener('click', openPopup));
+    };
+  }, []);
 
-      return (
-        <section className="content-card">
-            <h3 className="cta-title" style={{ marginBottom: '15px' }}>Share this Article</h3>
-            <div className="social-share-container">
-                <a href="#" id="share-fb" className="social-share-button share-facebook popup-share"><i className="fab fa-facebook-f"></i> Share</a>
-                <a href="#" id="share-tw" className="social-share-button share-twitter popup-share"><i className="fab fa-twitter"></i> Tweet</a>
-                <a href="#" id="share-li" className="social-share-button share-linkedin popup-share"><i className="fab fa-linkedin-in"></i> Share</a>
-                <a href="#" id="share-wa" className="social-share-button share-whatsapp" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp"></i> Share</a>
-                <a href="#" id="share-em" className="social-share-button share-email"><i className="fas fa-envelope"></i> Email</a>
-            </div>
-        </section>
-    );
+  return (
+    <section className="content-card">
+      <h3 className="cta-title" style={{ marginBottom: '15px' }}>Share this Article</h3>
+      <div className="social-share-container">
+        <a href="#" id="share-fb" className="social-share-button share-facebook popup-share"><i className="fab fa-facebook-f"></i> Share</a>
+        <a href="#" id="share-tw" className="social-share-button share-twitter popup-share"><i className="fab fa-twitter"></i> Tweet</a>
+        <a href="#" id="share-li" className="social-share-button share-linkedin popup-share"><i className="fab fa-linkedin-in"></i> Share</a>
+        <a href="#" id="share-wa" className="social-share-button share-whatsapp" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp"></i> Share</a>
+        <a href="#" id="share-em" className="social-share-button share-email"><i className="fas fa-envelope"></i> Email</a>
+      </div>
+    </section>
+  );
 };
 
 const AuthorBox = ({ authorImage, authorName, authorTitle, socialLinks, bio, specialties, appointmentLink }) => {
-    return (
-        <div className="new-author-card" aria-labelledby="author-title">
-            <div className="author-image-wrapper">
-                <img src={authorImage} alt={authorName} className="author-image-circle" />
-            </div>
-            <div className="author-details-wrapper">
-                <span className="author-written-by">Written By</span>
-                <h3 id="author-title" className="new-author-name">{authorName}</h3>
-                <div className="author-social-links">
-                    {socialLinks.twitter && <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" title="Twitter"><i className="fab fa-twitter"></i></a>}
-                    {socialLinks.facebook && <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" title="Facebook"><i className="fab fa-facebook-f"></i></a>}
-                    {socialLinks.youtube && <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" title="YouTube"><i className="fab fa-youtube"></i></a>}
-                    {socialLinks.instagram && <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" title="Instagram"><i className="fab fa-instagram"></i></a>}
-                </div>
-                <p className="author-text">
-                    <strong>{authorTitle}</strong>. {bio}
-                </p>
-                <p className="author-specialties">
-                    <strong>Specialties:</strong> {specialties}
-                </p>
-                <a href={appointmentLink} className="book-appointment-btn">BOOK AN APPOINTMENT</a>
-            </div>
+  return (
+    <div className="new-author-card" aria-labelledby="author-title">
+      <div className="author-image-wrapper">
+        <img src={authorImage} alt={authorName} className="author-image-circle" />
+      </div>
+      <div className="author-details-wrapper">
+        <span className="author-written-by">Written By</span>
+        <h3 id="author-title" className="new-author-name">{authorName}</h3>
+        <div className="author-social-links">
+          {socialLinks.twitter && <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" title="Twitter"><i className="fab fa-twitter"></i></a>}
+          {socialLinks.facebook && <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" title="Facebook"><i className="fab fa-facebook-f"></i></a>}
+          {socialLinks.youtube && <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" title="YouTube"><i className="fab fa-youtube"></i></a>}
+          {socialLinks.instagram && <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" title="Instagram"><i className="fab fa-instagram"></i></a>}
         </div>
-    );
+        <p className="author-text">
+          <strong>{authorTitle}</strong>. {bio}
+        </p>
+        <p className="author-specialties">
+          <strong>Specialties:</strong> {specialties}
+        </p>
+        <a href={appointmentLink} className="book-appointment-btn">BOOK AN APPOINTMENT</a>
+      </div>
+    </div>
+  );
 };
-
-
-function upsertMeta(attr, key, content) {
-  let el = document.querySelector(`meta[${attr}="${key}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute(attr, key);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-}
-
-
-function upsertLink(rel, href) {
-  let el = document.querySelector(`link[rel="${rel}"]`);
-  if (!el) {
-    el = document.createElement("link");
-    el.setAttribute("rel", rel);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("href", href);
-}
-
-
-function upsertJsonLd(id, json) {
-  let el = document.getElementById(id);
-  if (!el) {
-    el = document.createElement("script");
-    el.type = "application/ld+json";
-    el.id = id;
-    document.head.appendChild(el);
-  }
-  el.textContent = JSON.stringify(json);
-}
-
 
 export default function Blog2({
   heroSrc = img,
@@ -261,94 +221,6 @@ export default function Blog2({
   const articleRef = useRef(null);
   const progressRef = useRef(null);
   const cardsRef = useRef([]);
-
-
-  // SEO + JSON-LD
-  useEffect(() => {
-    const CANONICAL = `https://www.symphonydentalcare.in${basePath}`;
-    const TITLE = "Are Bleeding Gums Normal? Causes & Treatment Explained";
-    const DESCRIPTION = "Bleeding gums are not normal. See what causes them and get expert care from Dr. Sailee Kalyankar at Symphony Dental Care in Khar West, Mumbai.";
-    const OG_IMAGE = "https://www.symphonydentalcare.in/static/media/thankyou.0d462809be764adabcd4.webp"; // Use the same image or update if needed
-
-    const prevTitle = document.title;
-    document.title = TITLE;
-
-    upsertLink("canonical", CANONICAL);
-    upsertMeta("name", "description", DESCRIPTION);
-
-    // Open Graph
-    upsertMeta("property", "og:title", TITLE);
-    upsertMeta("property", "og:description", DESCRIPTION);
-    upsertMeta("property", "og:type", "article");
-    upsertMeta("property", "og:url", CANONICAL);
-    upsertMeta("property", "og:image", OG_IMAGE);
-    upsertMeta("property", "og:site_name", "Symphony Dental Care");
-
-    // Twitter
-    upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", TITLE);
-    upsertMeta("name", "twitter:description", DESCRIPTION);
-    upsertMeta("name", "twitter:image", OG_IMAGE);
-
-    // BlogPosting JSON-LD
-    const blogPostingLd = {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": CANONICAL,
-      },
-      headline: TITLE,
-      description: DESCRIPTION,
-      image: OG_IMAGE,
-      author: {
-        "@type": "Person",
-        name: "Dr. Sailee Kalyankar",
-        url: "https://www.symphonydentalcare.in/#about_dentist",
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "Symphony Dental Care",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://www.symphonydentalcare.in/static/media/logo.985b454d2bce33c9fce9.png",
-        },
-      },
-      datePublished: "2025-09-08", // Updated to current date
-    };
-
-    // FAQ JSON-LD based on sections
-    const faqLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: bleedingGumsContent.map((s) => ({
-    "@type": "Question",
-    name: s.title,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: `${s.intro} ${s.points.map(p => p.text).join(" ")}`, // merge into one answer
-    },
-  })),
-};
-
-
-    upsertJsonLd("ld-blogposting", blogPostingLd);
-    upsertJsonLd("ld-faq", faqLd);
-
-    // Cleanup function
-    return () => {
-      document.title = prevTitle;
-      const linkEl = document.querySelector('link[rel="canonical"]');
-      if (linkEl) linkEl.remove();
-      const metaEls = document.querySelectorAll('meta[name="description"], meta[property^="og:"], meta[name^="twitter:"]');
-      metaEls.forEach(el => el.remove());
-      const blogLdEl = document.getElementById("ld-blogposting");
-      if (blogLdEl) blogLdEl.remove();
-      const faqLdEl = document.getElementById("ld-faq");
-      if (faqLdEl) faqLdEl.remove();
-    };
-  }, [basePath]);
-
 
   // GSAP animations
   useEffect(() => {

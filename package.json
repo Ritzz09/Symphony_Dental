@@ -11,7 +11,7 @@
     "emailjs-com": "^2.6.4",
     "express": "^4.21.2",
     "fast-json-stable-stringify": "^2.1.0",
-    "framer-motion": "^12.0.8",
+    "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "lsof": "^0.0.4",
     "lucide-react": "^0.539.0",
@@ -20,7 +20,6 @@
     "react": "^18.3.1",
     "react-countup": "^6.5.3",
     "react-dom": "^18.3.1",
-    "react-helmet-async": "^2.0.5",
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.5",
     "react-scripts": "^5.0.1",
@@ -31,10 +30,13 @@
     "swiper": "^11.2.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
+    "start": "node server.js",
+    "serve": "node server.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+     "vercel-build": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
