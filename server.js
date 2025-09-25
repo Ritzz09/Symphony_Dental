@@ -48,7 +48,8 @@ const metaData = {
   }
 };
 
-// For Vercel serverless - don't serve static files from Express
+
+// Don't serve static files in production - let Vercel handle them
 if (process.env.NODE_ENV !== 'production') {
   app.use(express.static(path.join(__dirname, 'build'), {
     index: false
@@ -56,7 +57,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 function processHTML(req, res) {
-  const filePath = path.join(__dirname, 'build', 'index.html');
+  // For production, use absolute path
+  const filePath = process.env.NODE_ENV === 'production' 
+    ? path.join(process.cwd(), 'build', 'index.html')
+    : path.join(__dirname, 'build', 'index.html');
   
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
@@ -73,6 +77,7 @@ function processHTML(req, res) {
     data = data.replace(/__OG_IMAGE__/g, routeData.ogImage);
     data = data.replace(/__SCHEMA__/g, JSON.stringify(routeData.schema));
     
+    res.setHeader('Content-Type', 'text/html');
     res.send(data);
   });
 }
@@ -84,13 +89,4 @@ app.get('/blogs/top-10-dental-myths-busted-by-a-dentist', processHTML);
 app.get('/blogs/are-bleeding-gums-normal', processHTML);
 app.get('*', processHTML);
 
-// For Vercel serverless deployment
 module.exports = app;
-
-// For local development
-if (require.main === module) {
-  const port = process.env.PORT || 5000;
-  app.listen(port, () => {
-    console.log(`🚀 Server running on port ${port}`);
-  });
-}
