@@ -32,7 +32,7 @@ export const About_Dentist = () => {
 
           
           <p style={{color:'#292727', marginTop:'30px'}}>
-          Dr. Sailee leads Symphony Dental Care, a premier dental clinic in Khar/Bandra, offering a wide range of dental services, from routine check-ups to advanced treatments such as Full Mouth Rehabilitation, Single Sitting Root Canal Treatment (RCT), Dental Implants, Teeth Whitening, Braces & Aligners, Crowns & Bridges, Pediatric Dentistry and many more. Her focus is on delivering personalized care in a comfortable, modern setting.
+          Dr. Sailee leads Symphony Dental Care, a premier dental clinic in Khar/Bandra, offering a wide range of dental services, from routine check-ups to advanced treatments such as Full Mouth Rehabilitation, Single Sitting Root Canal Treatment (RCT), Dental Implants, Teeth Whitening, Braces & Aligners, Dental Veneers, Crowns & Bridges, Pediatric Dentistry and many more. Her focus is on delivering personalized care in a comfortable, modern setting.
 
           </p>
           <ul className="dentist-list">
@@ -42,6 +42,7 @@ export const About_Dentist = () => {
             <li>● Gentle and Reassuring Demeanor</li>
             <li>● Pain and Anxiety Management</li>
             <li>● Strong Specialists Team and Referral Network</li>
+            <li>● Aesthetic Mastery: Expert in Veneers, Aligners, and Digital Smile Design.</li>
 
           </ul>
           {/* <button className="appointment-button">Book An Appointment</button> */}

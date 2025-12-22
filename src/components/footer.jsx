@@ -10,8 +10,8 @@ const Footer = () => {
         <div className="footer-section">
           <h3>About Us</h3>
           <p>
-          At Symphony Dental Care, under the expertise of Dr. Sailee Kalyankar, a skilled root canal specialist, our welcoming dental hygienists and support team are dedicated to helping you achieve your best smile. We're committed to your oral health, and our team of experienced professionals is here to provide top-quality care.          </p>
-          <div className="social-icons">
+Under the expertise of Dr. Sailee Kalyankar, a skilled Root Canal Specialist, we provide world-class dental care to patients across Khar & Bandra. Our dedicated support team ensures a seamless experience for every patient. End your search for the best dental clinic near me with Symphony Dental Care, where your oral health is our top priority.</p>          
+<div className="social-icons">
             <a target="_blank" href="https://www.facebook.com/SymphonyDentalCareKharWest/"><FaFacebook /></a>
             <a target="_blank" href="https://www.instagram.com/symphonydentalcare"><FaInstagram /></a>
             <a target="_blank" href="https://www.youtube.com/@SymphonyDentalCare"><FaYoutube /></a>

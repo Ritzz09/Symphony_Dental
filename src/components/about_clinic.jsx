@@ -79,7 +79,7 @@ export const About_Clinic = (props) => {
       <div className="container">
         <div className="text-center">
           <div className="section-title">
-            <h2>Welcome to Symphony Dental Care</h2>
+            <h2>Redefining Dentistry in Khar West / Bandra</h2>
             {/* <p style={{ textAlign: "center" }}>
             A Modern Dental Clinic Committed to Your Dental Health
             </p> */}
@@ -129,11 +129,7 @@ export const About_Clinic = (props) => {
                     <p style={{fontSize:'17px', marginTop:'30px' , textAlign:'justify'}} key={index}>
                       {index === 1 ? (
                         <>
-                          Led by <strong>Dr. Sailee Kalyankar</strong>, an experienced root canal specialist, 
-                          our friendly dental hygienists and support staff are here to help bring out your best smile.  
-                          We're all about your oral health, and our team of skilled dental professionals is ready to take care of you. 
-                          With a multi-disciplinary approach, we’ve got specialists in every area, from endodontics and orthodontics to pediatric 
-                          dentistry and oral surgery. You can count on us for expert care in a relaxed atmosphere!
+                          Led by <strong>Dr. Sailee Kalyankar</strong>, a distinguished Root Canal Specialist, our philosophy is simple: Save the natural tooth first. We combine this specialist expertise in Microscopic RCT and Zirconia Crowns with high-end cosmetic solutions like Porcelain Veneers and Invisible Aligners to craft smiles that look as good as they feel.
                         </>
                       ) : (
                         text

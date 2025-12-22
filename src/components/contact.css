@@ -3,7 +3,7 @@
   position: relative;
   padding: 50px 0 40px;
   color: rgb(0, 0, 0);
-  
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,8 +16,10 @@
   background-color: #003b51;
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 50px 100px -20px rgba(50, 50, 93, .55), 0 30px 60px -20px rgba(0, 0, 0, 1), inset 0 -2px 6px 0 rgba(10, 37, 64, .35);
-  z-index: 2; 
+  box-shadow: 0 50px 100px -20px rgba(50, 50, 93, .55),
+    0 30px 60px -20px rgba(0, 0, 0, 1),
+    inset 0 -2px 6px 0 rgba(10, 37, 64, .35);
+  z-index: 2;
 }
 
 /* Target placeholder text color */
@@ -49,9 +51,9 @@
 
 #contact .section-title p {
   font-size: 20px;
-  
 }
-#contact h5{
+
+#contact h5 {
   margin-left: -120px;
   font-size: 15px;
 }
@@ -68,7 +70,6 @@
   position: absolute;
   content: "";
   background: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
-
   height: 4px;
   width: 60px;
   bottom: 0;
@@ -83,7 +84,8 @@
   text-align: left;
   margin-left: -120px;
 }
-#contact p{
+
+#contact p {
   margin-left: -120px;
 }
 
@@ -95,8 +97,7 @@
 #contact .btn-custom {
   margin: 30px 0;
   background-color: #5ca9fb;
-    background-image: linear-gradient(to right, #1559a0 0%, #6372ff 100%);
-  
+  background-image: linear-gradient(to right, #1559a0 0%, #6372ff 100%);
 }
 
 #contact .btn-custom:hover {
@@ -117,8 +118,13 @@ label {
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.42857143;
-  color: #fefefe;
-  background-color: #ffffff77;
+
+  /* FIX 1: readable input text (was white) */
+  color: #111111;
+
+  /* keep your translucent look, just slightly more readable */
+  background-color: #ffffffb8;
+
   background-image: none;
   border: 1px solid #000000;
   border-radius: 5px;
@@ -130,8 +136,10 @@ label {
   /* height: 40px; */
   margin-bottom: 20px;
 }
+
+/* FIX 2: readable placeholder (your rule was forcing white) */
 #contact .form-control::placeholder {
-  color: white !important;
+  color: rgba(0, 0, 0, 0.55) !important;
   opacity: 1; /* Ensures the color is fully visible */
 }
 
@@ -200,47 +208,51 @@ label {
   background: #fff;
 }
 
-#contact p1{
+#contact p1 {
   margin-left: -120px;
   font-size: 22px;
 }
 
+/* FIX 3: dropdown list/options readable (prevents white-on-white) */
+#contact select.form-control,
+#contact select.form-control option {
+  color: #111111 !important;
+  background: #ffffff !important;
+}
+
 @media only screen and (max-width: 768px) {
   #contact .section-title h2::after {
-      justify-self: anchor-center;
+    justify-self: anchor-center;
   }
-  #contact .container{
+  #contact .container {
     text-align: center;
   }
-  #contact .form-control{
+  #contact .form-control {
     width: 100%;
   }
 
-  #contact h3{
+  #contact h3 {
     margin-top: 5px;
     margin-left: 0;
     display: none;
   }
-  #contact h5{ 
+  #contact h5 {
     margin-left: 0;
   }
-  #contact h2{
+  #contact h2 {
     margin-left: 0;
   }
-  #contact p{
+  #contact p {
     margin-left: 0;
     display: none;
     color: #000000;
   }
-  #contact p1{
+  #contact p1 {
     margin-left: 0;
     font-size: 22px;
   }
-  
 
-  .row{
+  .row {
     display: block;
   }
 }
-
-
