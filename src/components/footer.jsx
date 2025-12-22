@@ -41,7 +41,7 @@ Under the expertise of Dr. Sailee Kalyankar, a skilled Root Canal Specialist, we
         {/* Open Hours Section */}
         <div className="footer-section">
           <h3>Open Hours</h3>
-          <p>Monday - Sunday: 9:00am to 10:00pm</p>
+          <p>Monday - Sunday: 7:45am to 10:00pm</p>
           
         </div>
 
