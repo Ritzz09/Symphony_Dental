@@ -24,8 +24,7 @@ export const About_Dentist = () => {
   //   textAlign: window.innerWidth <= 768 ? "center" : "left",
   // }}
 >
-  <strong>Dr. Sailee Kalyankar</strong> is a highly experienced dentist and
-  root canal specialist based in Khar/Bandra. With over 8 years of expertise in
+  <strong>Dr. Sailee Kalyankar</strong> is a highly experienced dentist in Khar/Bandra. With over 8 years of expertise in
   Conservative Dentistry & Endodontics (BDS, MDS), she is dedicated to
   providing gentle, comprehensive care for patients of all ages.
 </p>
